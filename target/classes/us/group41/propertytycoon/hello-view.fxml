@@ -1,16 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="us.group41.propertytycoon.HelloController">
+<VBox alignment="CENTER" prefHeight="546.0" prefWidth="543.0" spacing="20.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="us.group41.propertytycoon.HelloController">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+   <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
+      <children>
+         <HBox alignment="CENTER" prefHeight="26.0" prefWidth="503.0">
+            <children>
+               <Button mnemonicParsing="false" onMouseClicked="#onStartGameButtonClick" text="Start Game" textAlignment="CENTER" />
+               <TextField id="playersTextField" fx:id="playersTextField" alignment="CENTER" prefHeight="25.0" prefWidth="54.0" promptText="Players" />
+               <Label id="notIntLabel" fx:id="notIntLabel" />
+            </children>
+         </HBox>
+         <Label id="startGameLabel" fx:id="startGameLabel" />
+      </children>
+   </VBox>
+   <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
+      <children>
+         <HBox alignment="TOP_CENTER" prefHeight="26.0" prefWidth="304.0">
+            <children>
+               <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#movePlayer" text="Move Player" textAlignment="CENTER" />
+               <TextField id="movePlayerCurPosTextField" fx:id="movePlayerCurPosTextField" alignment="CENTER" prefHeight="25.0" prefWidth="103.0" promptText="Current Position" />
+               <TextField id="movePlayerDistTextField" fx:id="movePlayerDistTextField" alignment="CENTER" prefHeight="25.0" prefWidth="60.0" promptText="Distance" />
+            </children>
+         </HBox>
+         <Label id="movePlayerLabel" fx:id="movePlayerLabel" />
+      </children>
+   </VBox>
+   <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
+      <children>
+         <HBox alignment="CENTER" prefHeight="25.0" prefWidth="503.0">
+            <children>
+               <Button mnemonicParsing="false" onMouseClicked="#getPlayersOnPos" text="Count Players on Square" />
+               <TextField id="playerPosTextField" fx:id="playerPosTextField" alignment="CENTER" prefHeight="25.0" prefWidth="101.0" promptText="Square Number" />
+            </children>
+         </HBox>
+         <Label id="playerPosLabel" fx:id="playerPosLabel" />
+      </children>
+   </VBox>
+   <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
+      <children>
+          <Button onAction="#onHelloButtonClick" text="Hello!" />
+      
+          <Label fx:id="welcomeText" />
+      </children></VBox>
 </VBox>
