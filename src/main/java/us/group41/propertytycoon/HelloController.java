@@ -4,7 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.util.Random;
+
 public class HelloController {
+    private final Board playingBoard = new Board();
     public TextField playersTextField;
     public Label notIntLabel;
     public TextField playerPosTextField;
@@ -13,16 +16,17 @@ public class HelloController {
     public TextField movePlayerDistTextField;
     public TextField movePlayerCurPosTextField;
     public Label movePlayerLabel;
+    public TextField rollDiceCurPosTextField;
+    public Label rollDiceLabel;
     @FXML
     private Label welcomeText;
-    private final Board playingBoard = new Board();
 
     public static boolean isNumeric(String strNum) {
         if (strNum == null) {
             return false;
         }
         try {
-            int num = Integer.parseInt(strNum);
+            Integer.parseInt(strNum);
         } catch (NumberFormatException nfe) {
             return false;
         }
@@ -81,6 +85,26 @@ public class HelloController {
             }
         } else {
             movePlayerLabel.setText("Distance not a number, please try again.");
+        }
+    }
+
+    @FXML
+    protected void rollDice() {
+        if (isNumeric(rollDiceCurPosTextField.getText())) {
+            int curPos = Integer.parseInt(rollDiceCurPosTextField.getText());
+            Random random = new Random();
+            int[] rolls = random.ints(2, 1, 6).toArray();
+            int firstRoll = rolls[0];
+            int secondRoll = rolls[1];
+            int totalRoll = firstRoll + secondRoll;
+            int newPos = curPos + totalRoll;
+            if (playingBoard.movePlayer(newPos, curPos)) {
+                rollDiceLabel.setText("Success! Player has rolled a " + firstRoll + " and a " + secondRoll + " for a total of " + totalRoll + " and moved from " + curPos + " to " + newPos + "!");
+            } else {
+                rollDiceLabel.setText("Error. No players on that square.");
+            }
+        } else {
+            rollDiceLabel.setText("Current Position not a number, please try again.");
         }
     }
 }

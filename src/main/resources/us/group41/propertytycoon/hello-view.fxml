@@ -34,6 +34,17 @@
    </VBox>
    <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
       <children>
+         <HBox alignment="CENTER" prefHeight="26.0" prefWidth="503.0">
+            <children>
+               <Button mnemonicParsing="false" onMouseClicked="#rollDice" text="Roll Dice &amp; Move" />
+               <TextField id="rollDiceCurPosTextField" fx:id="rollDiceCurPosTextField" prefHeight="25.0" prefWidth="102.0" promptText="Current Position" />
+            </children>
+         </HBox>
+         <Label id="rollDiceLabel" fx:id="rollDiceLabel" />
+      </children>
+   </VBox>
+   <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
+      <children>
          <HBox alignment="CENTER" prefHeight="25.0" prefWidth="503.0">
             <children>
                <Button mnemonicParsing="false" onMouseClicked="#getPlayersOnPos" text="Count Players on Square" />
