@@ -41,8 +41,14 @@ public class HelloController {
     @FXML
     protected void onStartGameButtonClick() {
 
+        int i;
         int players = getEnteredPlayers();
         if (players > 0) {
+            Property[] tiles = playingBoard.loadProperty();
+            for (i = 0; i < tiles.length; i++) {
+                String name = tiles[i].getStreetname();
+                welcomeText.setText("Success! " + name + " properties exist.");
+            }
             if (playingBoard.startGame(players)) {
                 startGameLabel.setText("Success! " + players + " players have been added.");
             } else {
