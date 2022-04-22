@@ -1,8 +1,11 @@
 package us.group41.propertytycoon;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import org.apache.commons.text.WordUtils;
 
 import java.util.Random;
 
@@ -18,6 +21,12 @@ public class HelloController {
     public Label movePlayerLabel;
     public TextField rollDiceCurPosTextField;
     public Label rollDiceLabel;
+    public Label addPlayerLabel;
+    public Button rollDiceButton;
+    public ComboBox playerTokenComboBox;
+    int playerInt = 0;
+    boolean tokenFirstTime = true;
+    int players = 0;
     @FXML
     private Label welcomeText;
 
@@ -39,21 +48,43 @@ public class HelloController {
     }
 
     @FXML
-    protected void onStartGameButtonClick() {
+    protected void onPlayerTokenComboBoxClick() {
+        if (tokenFirstTime) {
+            playerTokenComboBox.getItems().addAll(Player.Token.values());
+            tokenFirstTime = false;
+        }
+    }
 
-        int i;
-        int players = getEnteredPlayers();
-        if (players > 0) {
-            Property[] tiles = playingBoard.loadProperty();
-            for (i = 0; i < tiles.length; i++) {
-                String name = tiles[i].getStreetname();
-                welcomeText.setText("Success! " + name + " properties exist.");
+    @FXML
+    protected void onAddPlayerButtonClick() {
+        Player.Token token = (Player.Token) playerTokenComboBox.getValue();
+        if (token == null) {
+            addPlayerLabel.setText("Please select a valid token.");
+            return;
+        }
+        playerInt += 1;
+        if (playerInt <= 5) {
+            if (Board.addPlayer(playerInt, token)) {
+                addPlayerLabel.setText("Player" + playerInt + " has been added to the game with the " + WordUtils.capitalizeFully(String.valueOf(token)) + " token. " + playerInt + "/5");
+            } else {
+                addPlayerLabel.setText("failed to add player");
             }
-            if (playingBoard.startGame(players)) {
-                startGameLabel.setText("Success! " + players + " players have been added.");
+
+        } else {
+            addPlayerLabel.setText("Maximum of 5 players added. Please start the game.");
+        }
+    }
+
+    @FXML
+    protected void onStartGameButtonClick() {
+        if (playerInt > 0) {
+            if (playingBoard.startGame()) {
+                startGameLabel.setText("Success! Game has started");
             } else {
                 startGameLabel.setText("Error. Game has already started with " + players + " players.");
             }
+        } else {
+            startGameLabel.setText("No players yet. Please add some players.");
         }
     }
 
@@ -96,21 +127,14 @@ public class HelloController {
 
     @FXML
     protected void rollDice() {
-        if (isNumeric(rollDiceCurPosTextField.getText())) {
-            int curPos = Integer.parseInt(rollDiceCurPosTextField.getText());
-            Random random = new Random();
-            int[] rolls = random.ints(2, 1, 6).toArray();
-            int firstRoll = rolls[0];
-            int secondRoll = rolls[1];
-            int totalRoll = firstRoll + secondRoll;
-            int newPos = curPos + totalRoll;
-            if (playingBoard.movePlayer(newPos, curPos)) {
-                rollDiceLabel.setText("Success! Player has rolled a " + firstRoll + " and a " + secondRoll + " for a total of " + totalRoll + " and moved from " + curPos + " to " + newPos + "!");
-            } else {
-                rollDiceLabel.setText("Error. No players on that square.");
-            }
-        } else {
-            rollDiceLabel.setText("Current Position not a number, please try again.");
-        }
+        Random random = new Random();
+        int[] rolls = random.ints(2, 1, 6).toArray();
+        int firstRoll = rolls[0];
+        int secondRoll = rolls[1];
+        int totalRoll = firstRoll + secondRoll;
+        //disable end turn
+        //enable end turn button
+        rollDiceButton.setDisable(!playingBoard.rolledDice(totalRoll, firstRoll == secondRoll));
+        rollDiceLabel.setText("Player has rolled a " + firstRoll + " and a " + secondRoll + " and moved a total of " + totalRoll + " places!");
     }
 }
