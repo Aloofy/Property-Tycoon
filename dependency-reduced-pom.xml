@@ -4,7 +4,7 @@
   <groupId>us.group41</groupId>
   <artifactId>Property-Tycoon</artifactId>
   <name>Property-Tycoon</name>
-  <version>0.1.1-alpha</version>
+  <version>0.2.0-alpha</version>
   <build>
     <plugins>
       <plugin>
