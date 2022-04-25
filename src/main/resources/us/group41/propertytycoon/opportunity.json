@@ -1,0 +1,114 @@
+[
+  {
+    "description": "Bank pays you divided of £50",
+    "action": {
+      "actionType": "Collect",
+      "actionValue": 50
+    }
+  },
+  {
+    "description": "You have won a lip sync battle. Collect £100",
+    "action": {
+      "actionType": "Collect",
+      "actionValue": 100
+    }
+  },
+  {
+    "description": "Advance to Turing Heights",
+    "action": {
+      "actionType": "GoForward",
+      "actionValue": 39
+    }
+  },
+  {
+    "description": "Advance to Han Xin Gardens. If you pass GO, collect £200",
+    "action": {
+      "actionType": "GoForward",
+      "actionValue": 24
+    }
+  },
+  {
+    "description": "Fined £15 for speeding",
+    "action": {
+      "actionType": "PayFree",
+      "actionValue": 15
+    }
+  },
+  {
+    "description": "Pay university fees of £150",
+    "action": {
+      "actionType": "PayBank",
+      "actionValue": 150
+    }
+  },
+  {
+    "description": "Take a trip to Hove station. If you pass GO collect £200",
+    "action": {
+      "actionType": "GoForward",
+      "actionValue": 15
+    }
+  },
+  {
+    "description": "Loan matures, collect £150",
+    "action": {
+      "actionType": "Collect",
+      "actionValue": 150
+    }
+  },
+  {
+    "description": "You are assessed for repairs, £40/house, £115/hotel",
+    "action": {
+      "actionType": "HouseRepair1",
+      "actionValue": 0
+    }
+  },
+  {
+    "description": "Advance to GO",
+    "action": {
+      "actionType": "GoForward",
+      "actionValue": 0
+    }
+  },
+  {
+    "description": "You are assessed for repairs, £25/house, £100/hotel",
+    "action": {
+      "actionType": "HouseRepair2",
+      "actionValue": 0
+    }
+  },
+  {
+    "description": "Go back 3 spaces",
+    "action": {
+      "actionType": "MoveBack",
+      "actionValue": 3
+    }
+  },
+  {
+    "description": "Advance to Skywalker Drive. If you pass GO collect £200",
+    "action": {
+      "actionType": "GoForward",
+      "actionValue": 11
+    }
+  },
+  {
+    "description": "Go to jail. Do not pass GO, do not collect £200",
+    "action": {
+      "actionType": "Jail",
+      "actionValue": 0
+    }
+  },
+  {
+    "description": "Drunk in charge of a hoverboard. Fine £30",
+    "action": {
+      "actionType": "PayFree",
+      "actionValue": 30
+    }
+  },
+  {
+    "description": "Get out of jail free",
+    "action": {
+      "actionType": "JailFree",
+      "actionValue": 0
+    }
+  }
+]

@@ -1,18 +1,70 @@
 package us.group41.propertytycoon;
 
 public class Player {
-    private final int playerNo;
+    private final int playerNum;
     public Token playerToken;
-    private String name = null;
     private Integer money = 0;
-    private Boolean isInJail = false;
-    private short position = 0;
+    private Boolean InJail = false;
+    //private short position = 0;
     private int currentPos;
+    private short rollDoubleTimes = 0;
+    private short numJailFree = 0;
+
+
+    private boolean passedGO = false;
+
+
+    private short lastRoll;
 
     Player(int playerNum, Token token) {
-        playerNo = playerNum;
+        this.playerNum = playerNum;
         playerToken = token;
     }
+
+    public boolean isPassedGO() {
+        return passedGO;
+    }
+
+    public void setPassedGO(boolean passedGO) {
+        this.passedGO = passedGO;
+    }
+
+    public short getLastRoll() {
+        return lastRoll;
+    }
+
+    public void setLastRoll(short lastRoll) {
+        this.lastRoll = lastRoll;
+    }
+
+    public Boolean getInJail() {
+        return InJail;
+    }
+
+    public void setInJail(Boolean inJail) {
+        InJail = inJail;
+    }
+
+    public short getNumJailFree() {
+        return numJailFree;
+    }
+
+    public void setNumJailFree(short numJailFree) {
+        this.numJailFree = numJailFree;
+    }
+
+    public short getRollDoubleTimes() {
+        return rollDoubleTimes;
+    }
+
+    public void setRollDoubleTimes(short rollDoubleTimes) {
+        this.rollDoubleTimes = rollDoubleTimes;
+    }
+
+    public Property getCurrentTile(Board board) {
+        return Board.tiles[this.getCurrentPos()];
+    }
+
 
     public int getCurrentPos() {
         return currentPos;
@@ -30,21 +82,10 @@ public class Player {
         this.playerToken = playerToken;
     }
 
-    public short getPosition() {
-        return position;
+    public void payMoney(Short amount) {
+        money = money - amount;
     }
 
-    public void setPosition(short position) {
-        this.position = position;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public Integer getMoney() {
         return this.money;
@@ -54,31 +95,36 @@ public class Player {
         this.money = money;
     }
 
-    public void PayMoney(Short amount) {
-        money = money - amount;
-    }
-
-    public void GiveMoney(Short amount) {
+    public void giveMoney(Short amount) {
         money = money + amount;
     }
 
-    public void setInJail() {
-        isInJail = true;
+    public short getHouses(Board board, Player player) {
+        short numHouses = 0;
+        for (int i = 0; i < Board.tiles.length; i++) {
+            if (Board.tiles[i].getOwner() == player) {
+                numHouses = (short) (numHouses + Board.tiles[i].getNumHouses());
+            }
+        }
+        return numHouses;
     }
 
-    public boolean isInJail() {
-        return isInJail;
+    public short getHotels(Board board, Player player) {
+        short numHotels = 0;
+        for (int i = 0; i < Board.tiles.length; i++) {
+            if (Board.tiles[i].getOwner() == player) {
+                numHotels = (short) (numHotels + Board.tiles[i].getNumHotels());
+            }
+        }
+        return numHotels;
+    }
+
+    public enum Token {
+        BOOT, SMARTPHONE, SHIP, HATSTAND, CAT, IRON
     }
 
     @Override
     public String toString() {
         return "\nmoney: " + money + "\n";
     }
-
-
-    public enum Token {
-        BOOT, SMARTPHONE, SHIP, HATSTAND, CAT, IRON
-    }
-
-
 }

@@ -3,8 +3,10 @@
     "streetName": "GO",
     "group": "",
     "cost": "",
-    "action": "Collect",
-    "actionValue": 200
+    "action": {
+      "actionType": "Collect",
+      "actionValue": 200
+    }
   },
   {
     "streetName": "The Old Creek",
@@ -23,8 +25,10 @@
     "streetName": "Pot Luck",
     "group": "",
     "cost": "",
-    "action": "Take PotLuck",
-    "actionValue": ""
+    "action": {
+      "actionType": "PotLuck",
+      "actionValue": 0
+    }
   },
   {
     "streetName": "Gangsters Paradise",
@@ -43,8 +47,10 @@
     "streetName": "Income Tax",
     "group": "",
     "cost": "",
-    "action": "PayBank",
-    "actionValue": "200"
+    "action": {
+      "actionType": "PayBank",
+      "actionValue": "200"
+    }
   },
   {
     "streetName": "Brighton Station",
@@ -72,8 +78,10 @@
     "streetName": "Opportunity Knocks",
     "group": "",
     "cost": "",
-    "action": "Take Opportunity",
-    "actionValue": ""
+    "action": {
+      "actionType": "Opportunity",
+      "actionValue": "0"
+    }
   },
   {
     "streetName": "Potter Avenue",
@@ -105,8 +113,10 @@
     "streetName": "Jail/Just visiting",
     "group": "",
     "cost": "",
-    "action": "Visit Jail",
-    "actionValue": ""
+    "action": {
+      "actionType": "VisitJail",
+      "actionValue": "0"
+    }
   },
   {
     "streetName": "Skywalker Drive",
@@ -125,7 +135,10 @@
     "streetName": "Tesla Power Co",
     "group": "Utilities",
     "cost": 150,
-    "action": "RollMultiple"
+    "action": {
+      "actionType": "RollMultiple",
+      "actionValue": "0"
+    }
   },
   {
     "streetName": "Wookie Hole",
@@ -179,8 +192,10 @@
     "streetName": "Pot Luck",
     "group": "",
     "cost": "",
-    "action": "Take PotLuck",
-    "actionValue": ""
+    "action": {
+      "actionType": "PotLuck",
+      "actionValue": "0"
+    }
   },
   {
     "streetName": "Dunham Street",
@@ -212,8 +227,10 @@
     "streetName": "Free Parking",
     "group": "",
     "cost": "",
-    "action": "Free Parking",
-    "actionValue": ""
+    "action": {
+      "actionType": "FreeParking",
+      "actionValue": "0"
+    }
   },
   {
     "streetName": "Yue Fei Square",
@@ -232,8 +249,10 @@
     "streetName": "Opportunity Knocks",
     "group": "",
     "cost": "",
-    "action": "Take Opportunity",
-    "actionValue": ""
+    "action": {
+      "actionType": "Opportunity",
+      "actionValue": "0"
+    }
   },
   {
     "streetName": "Mulan Rouge",
@@ -300,7 +319,10 @@
     "streetName": "Edison Water",
     "group": "Utilities",
     "cost": 150,
-    "action": "RollMultiple"
+    "action": {
+      "actionType": "RollMultiple",
+      "actionValue": "0"
+    }
   },
   {
     "streetName": "Crusher Creek",
@@ -319,8 +341,10 @@
     "streetName": "Go to Jail",
     "group": "",
     "cost": "",
-    "action": "Go to Jail",
-    "actionValue": ""
+    "action": {
+      "actionType": "Jail",
+      "actionValue": "0"
+    }
   },
   {
     "streetName": "Sirat Mews",
@@ -352,8 +376,10 @@
     "streetName": "Pot Luck",
     "group": "",
     "cost": "",
-    "action": "Take PotLuck",
-    "actionValue": ""
+    "action": {
+      "actionType": "PotLuck",
+      "actionValue": "0"
+    }
   },
   {
     "streetName": "Ibis Close",
@@ -381,8 +407,10 @@
     "streetName": "Opportunity Knocks",
     "group": "",
     "cost": "",
-    "action": "Take Opportunity",
-    "actionValue": ""
+    "action": {
+      "actionType": "Opportunity",
+      "actionValue": "0"
+    }
   },
   {
     "streetName": "James Webb Way",
@@ -401,8 +429,10 @@
     "streetName": "Super Tax",
     "group": "",
     "cost": "",
-    "action": "PayBank",
-    "actionValue": "100"
+    "action": {
+      "actionType": "PayBank",
+      "actionValue": "0"
+    }
   },
   {
     "streetName": "Turing Heights",

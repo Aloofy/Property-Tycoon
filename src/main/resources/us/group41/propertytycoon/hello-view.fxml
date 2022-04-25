@@ -8,57 +8,209 @@
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
    </padding>
-   <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
-      <HBox alignment="CENTER" prefHeight="26.0" prefWidth="503.0">
-         <Button mnemonicParsing="false" onMouseClicked="#onStartGameButtonClick" text="Start Game"
-                 textAlignment="CENTER"/>
-         <TextField id="playersTextField" fx:id="playersTextField" alignment="CENTER" prefHeight="25.0"
-                    prefWidth="54.0" promptText="Players" visible="false"/>
-         <Label id="notIntLabel" fx:id="notIntLabel"/>
-      </HBox>
-      <Label id="startGameLabel" fx:id="startGameLabel"/>
-   </VBox>
-   <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
-      <HBox alignment="CENTER" prefHeight="26.0" prefWidth="503.0">
-         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                 onMouseClicked="#onAddPlayerButtonClick" text="Add Player"/>
-         <ComboBox id="playerTokenComboBox" fx:id="playerTokenComboBox"
-                   onMouseClicked="#onPlayerTokenComboBoxClick" prefWidth="150.0"
-                   promptText="Choose Game Piece"/>
-      </HBox>
-      <Label id="addPlayerLabel" fx:id="addPlayerLabel"/>
-   </VBox>
-   <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
-      <HBox alignment="TOP_CENTER" prefHeight="26.0" prefWidth="304.0">
-         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                 onMouseClicked="#movePlayer" text="Move Player" textAlignment="CENTER"/>
-         <TextField id="movePlayerCurPosTextField" fx:id="movePlayerCurPosTextField" alignment="CENTER"
-                    prefHeight="25.0" prefWidth="103.0" promptText="Current Position"/>
-         <TextField id="movePlayerDistTextField" fx:id="movePlayerDistTextField" alignment="CENTER"
-                    prefHeight="25.0" prefWidth="60.0" promptText="Distance"/>
-      </HBox>
-      <Label id="movePlayerLabel" fx:id="movePlayerLabel"/>
-   </VBox>
-   <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
-      <HBox alignment="CENTER" prefHeight="26.0" prefWidth="503.0">
-         <Button id="rollDiceButton" fx:id="rollDiceButton" mnemonicParsing="false"
-                 onMouseClicked="#rollDice" text="Roll Dice &amp; Move"/>
-         <TextField id="rollDiceCurPosTextField" fx:id="rollDiceCurPosTextField" prefHeight="25.0"
-                    prefWidth="102.0" promptText="Current Position"/>
-      </HBox>
-      <Label id="rollDiceLabel" fx:id="rollDiceLabel"/>
-   </VBox>
-   <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
-      <HBox alignment="CENTER" prefHeight="26.0" prefWidth="503.0">
-         <Button mnemonicParsing="false" onMouseClicked="#getPlayersOnPos" text="Count Players on Square"/>
-         <TextField id="playerPosTextField" fx:id="playerPosTextField" alignment="CENTER" prefHeight="25.0"
-                    prefWidth="101.0" promptText="Square Number"/>
-      </HBox>
-      <Label id="playerPosLabel" fx:id="playerPosLabel"/>
-   </VBox>
-   <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
-      <Button onAction="#onHelloButtonClick" text="Hello!"/>
-
-      <Label fx:id="welcomeText"/>
-   </VBox>
+   <HBox alignment="CENTER_RIGHT" prefHeight="1000.0">
+      <children>
+         <VBox prefWidth="500.0">
+            <children>
+               <HBox prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                  </children>
+               </HBox>
+               <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                  </children>
+               </HBox>
+               <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                  </children>
+               </HBox>
+               <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                  </children>
+               </HBox>
+               <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                  </children>
+               </HBox>
+               <HBox layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                  </children>
+               </HBox>
+               <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                  </children>
+               </HBox>
+               <HBox layoutX="10.0" layoutY="94.0" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                  </children>
+               </HBox>
+               <HBox layoutX="10.0" layoutY="178.0" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                  </children>
+               </HBox>
+               <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
+                  </children>
+               </HBox>
+            </children>
+         </VBox>
+         <VBox alignment="CENTER_RIGHT">
+            <children>
+               <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
+                  <HBox alignment="TOP_CENTER" prefHeight="26.0" prefWidth="304.0">
+                     <Button fx:id="endTurnButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+                             onMouseClicked="#onEndTurnButtonClick" text="End Turn" textAlignment="CENTER"/>
+                  </HBox>
+                  <Label id="movePlayerLabel" fx:id="movePlayerLabel"/>
+               </VBox>
+               <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
+                  <HBox alignment="CENTER" prefHeight="26.0" prefWidth="503.0">
+                     <Button mnemonicParsing="false" onMouseClicked="#onStartGameButtonClick" text="Start Game"
+                             textAlignment="CENTER"/>
+                     <Label id="notIntLabel" fx:id="notIntLabel"/>
+                  </HBox>
+                  <Label id="startGameLabel" fx:id="startGameLabel"/>
+               </VBox>
+               <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
+                  <HBox alignment="CENTER" prefHeight="26.0" prefWidth="503.0">
+                     <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+                             onMouseClicked="#onAddPlayerButtonClick" text="Add Player"/>
+                     <ComboBox id="playerTokenComboBox" fx:id="playerTokenComboBox"
+                               onMouseClicked="#onPlayerTokenComboBoxClick" prefWidth="150.0"
+                               promptText="Choose Game Piece"/>
+                  </HBox>
+                  <Label id="addPlayerLabel" fx:id="addPlayerLabel"/>
+               </VBox>
+               <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
+                  <HBox alignment="CENTER" prefHeight="26.0" prefWidth="503.0">
+                     <Button id="rollDiceButton" fx:id="rollDiceButton" mnemonicParsing="false"
+                             onMouseClicked="#rollDice" text="Roll Dice &amp; Move"/>
+                  </HBox>
+                  <Label id="rollDiceLabel" fx:id="rollDiceLabel"/>
+               </VBox>
+               <VBox alignment="CENTER" layoutX="10.0" layoutY="313.0" prefHeight="50.0" prefWidth="503.0">
+                  <children>
+                     <HBox alignment="CENTER" prefHeight="26.0" prefWidth="503.0">
+                        <children>
+                           <Button id="buyPropertyButton" fx:id="buyPropertyButton" mnemonicParsing="false"
+                                   onMouseClicked="#onBuyPropertyButtonClick" text="Buy Property"/>
+                        </children>
+                     </HBox>
+                     <Label id="buyPropertyLabel" fx:id="buyPropertyLabel"/>
+                  </children>
+               </VBox>
+            </children>
+         </VBox>
+      </children>
+   </HBox>
 </VBox>

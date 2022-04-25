@@ -23,10 +23,12 @@ public class HelloController {
     public Label rollDiceLabel;
     public Label addPlayerLabel;
     public Button rollDiceButton;
+    public Button endTurnButton;
     public ComboBox playerTokenComboBox;
+    public Button buyPropertyButton;
     int playerInt = 0;
     boolean tokenFirstTime = true;
-    int players = 0;
+    //int players = 0;
     @FXML
     private Label welcomeText;
 
@@ -56,6 +58,13 @@ public class HelloController {
     }
 
     @FXML
+    protected void onEndTurnButtonClick() {
+        endTurnButton.setDisable(true);
+        rollDiceButton.setDisable(false);
+        Board.endTurn();
+    }
+
+    @FXML
     protected void onAddPlayerButtonClick() {
         Player.Token token = (Player.Token) playerTokenComboBox.getValue();
         if (token == null) {
@@ -78,10 +87,10 @@ public class HelloController {
     @FXML
     protected void onStartGameButtonClick() {
         if (playerInt > 0) {
-            if (playingBoard.startGame()) {
+            if (playingBoard.startGame(playingBoard)) {
                 startGameLabel.setText("Success! Game has started");
             } else {
-                startGameLabel.setText("Error. Game has already started with " + players + " players.");
+                startGameLabel.setText("Error. Game has already started with " + playingBoard.getNumPlayers() + " players.");
             }
         } else {
             startGameLabel.setText("No players yet. Please add some players.");
@@ -101,7 +110,7 @@ public class HelloController {
     @FXML
     protected void getPlayersOnPos() {
         int pos = Integer.parseInt(playerPosTextField.getText());
-        int playersOnPos = playingBoard.getPlayersOnSquare(pos);
+        int playersOnPos = 0; //playingBoard.getPlayersOnSquare(pos);
         playerPosLabel.setText("There are " + playersOnPos + " players on the " + pos + " square.");
     }
 
@@ -112,11 +121,11 @@ public class HelloController {
             if (isNumeric(movePlayerCurPosTextField.getText())) {
                 int curPos = Integer.parseInt(movePlayerCurPosTextField.getText());
                 int newPos = curPos + distance;
-                if (playingBoard.movePlayer(newPos, curPos)) {
-                    movePlayerLabel.setText("Success! Player has been moved to the " + newPos + " square.");
-                } else {
-                    movePlayerLabel.setText("Error. No players on that square.");
-                }
+                //if (playingBoard.movePlayer(newPos, curPos)) {
+                //    movePlayerLabel.setText("Success! Player has been moved to the " + newPos + " square.");
+                //} else {
+                //    movePlayerLabel.setText("Error. No players on that square.");
+                //}
             } else {
                 movePlayerLabel.setText("Current Position not a number, please try again.");
             }
@@ -131,10 +140,62 @@ public class HelloController {
         int[] rolls = random.ints(2, 1, 6).toArray();
         int firstRoll = rolls[0];
         int secondRoll = rolls[1];
+
         int totalRoll = firstRoll + secondRoll;
-        //disable end turn
-        //enable end turn button
-        rollDiceButton.setDisable(!playingBoard.rolledDice(totalRoll, firstRoll == secondRoll));
-        rollDiceLabel.setText("Player has rolled a " + firstRoll + " and a " + secondRoll + " and moved a total of " + totalRoll + " places!");
+        if (playingBoard.rolledDice(totalRoll, firstRoll == secondRoll)) {
+            rollDiceButton.setDisable(false);
+            endTurnButton.setDisable(true);
+        } else {
+            rollDiceButton.setDisable(true);
+            endTurnButton.setDisable(false);
+        }
+        playingBoard.getCurrentPlayer().setLastRoll((short) totalRoll); // save last roll for utilities rent calculation
+        Player player = playingBoard.getCurrentPlayer();
+        Property property = player.getCurrentTile(playingBoard);
+        String streetName = property.getStreetName();
+        Action action = property.getAction();
+
+        Card card;
+        String actionType = null;
+        if (action != null) {
+            actionType = action.getActionType();
+        }
+
+        if (actionType != null && !actionType.equals("RollMultiple")) {
+
+            switch (actionType) {
+                case "PotLuck":
+                    card = playingBoard.takeCard("PotLuck", Board.getPlayers(), playingBoard);
+                    break;
+                case "Opportunity":
+                    card = playingBoard.takeCard("Opportunity", Board.getPlayers(), playingBoard);
+                    break;
+                case "PayBank":
+                case "Collect":
+                case "FreeParking":
+                case "Jail":
+                    property.getAction().performAction(Board.getPlayers(), playingBoard);
+                    break;
+            }
+        } else {
+            Player owner = property.getOwner();
+            if (owner != null) {
+                // calculate any rent due
+                short rent = property.getDueRent(player);
+                player.payMoney(rent);
+                owner.giveMoney(rent);
+            } else {
+                buyPropertyButton.setDisable(false);
+                //property.setOwner(player);
+            }
+        }
+        rollDiceLabel.setText("Player has rolled a " + firstRoll + " and a " + secondRoll + " and moved to " + streetName + ".");
+    }
+
+    public void onBuyPropertyButtonClick() {
+        Player player = playingBoard.getCurrentPlayer();
+        Property property = player.getCurrentTile(playingBoard);
+        Bank bank = playingBoard.bank;
+        property.buyProperty(player, bank);
     }
 }

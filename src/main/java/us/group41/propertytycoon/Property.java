@@ -1,12 +1,15 @@
 package us.group41.propertytycoon;
 
 
+import java.util.Objects;
+
 public class Property {
     private String streetName = null;
     private Short cost = null;
-    private Short actionValue;
+
+
+    private Action action;
     private String group = null;
-    private String action = null;
     private Short rent = null;
     private Short houseCost = null;
     private Short hotelCost = null;
@@ -15,18 +18,19 @@ public class Property {
     private Short rent3 = null;
     private Short rent4 = null;
     private Short rentH = null;
-    private Short numHouses = null;
+    private Short numHouses = 0;
     private Player owner = null;
-    private Short numHotels = null;
+    private Short numHotels = 0;
     private boolean allPropertiesOwnedByOwner;
 
-    public Short getActionValue() {
-        return actionValue;
+    public Action getAction() {
+        return this.action;
     }
 
-    public void setActionValue(Short actionValue) {
-        this.actionValue = actionValue;
+    public void setAction(Action action) {
+        this.action = action;
     }
+
 
     public String getStreetName() {
         return this.streetName;
@@ -53,28 +57,29 @@ public class Property {
     }
 
     public boolean buyProperty(Player player, Bank bank) {
-
-        if (owner != null) {
+        short cost = this.cost;
+        if (this.owner != null || Objects.equals(this.group, "")) {
             return false;
         } else {
-
-            if (player.getMoney() < this.cost) {
+            if (!player.isPassedGO()) {
                 return false;
             } else {
-                player.PayMoney(this.cost);
-                bank.GiveMoney(this.cost);
-                this.setOwner(player);
-                return true;
+                if (player.getMoney() < cost) {
+                    return false;
+                } else {
+                    player.payMoney(cost);
+                    bank.giveMoney(cost);
+                    this.setOwner(player);
+                    return true;
+                }
             }
-
-
         }
 
     }
 
     public boolean buyHouse(Player player, Bank bank) {
         short houseCost;
-        if (owner != player) {
+        if (owner != player || !allPropertiesOwnedByOwner) {
             return false;
         } else {
             houseCost = this.getHouseCost();
@@ -85,10 +90,25 @@ public class Property {
                 if (numHouses == 4) {
                     return false;
                 } else {
-                    player.PayMoney(houseCost);
-                    bank.GiveMoney(houseCost);
-                    this.setNumHouses((short) (numHouses + 1));
-                    return true;
+                    short minHouses = 0;
+                    Property[] tiles = Board.getTiles();
+                    for (Property tile : tiles) {
+                        if (Objects.equals(this.group, tile.group)) {
+                            if (minHouses < tile.getNumHouses()) {
+                                minHouses = tile.getNumHouses();
+                            }
+                        }
+                    }
+                    if (this.numHouses > minHouses + 1) {  // you are trying to add a house which will result in a tile with 2 more houses than the rest
+                        return false;
+                    } else {
+                        player.payMoney(houseCost);
+                        bank.giveMoney(houseCost);
+                        this.setNumHouses((short) (numHouses + 1));
+                        return true;
+                    }
+
+
                 }
             }
         }
@@ -96,51 +116,104 @@ public class Property {
 
     public boolean buyHotel(Player player, Bank bank) {
         short hotelCost;
-        if (this.owner != player) {
+        if (this.owner != player || !allPropertiesOwnedByOwner) {
             return false;
         } else {
             hotelCost = this.hotelCost;
             if (player.getMoney() < hotelCost) {
                 return false;
             } else {
-                short numHouses = this.getNumHouses();
-                if (numHouses != 4) {
+                short minHouses = 0;
+                Property[] tiles = Board.getTiles();
+                for (Property tile : tiles) {
+                    if (Objects.equals(this.group, tile.group)) {
+                        if (minHouses < tile.getNumHouses()) {
+                            minHouses = tile.getNumHouses();
+                        }
+                    }
+                }
+                if (minHouses != 4) {
                     return false;
                 } else {
                     if (this.getNumHotels() == 1) {
                         return false;
+                    } else {
+                        player.payMoney(hotelCost);
+                        bank.giveMoney(hotelCost);
+                        this.setNumHotels((short) 1);
+                        return true;
                     }
 
-                    player.PayMoney(hotelCost);
-                    bank.GiveMoney(hotelCost);
-                    this.setNumHotels((short) 1);
-                    return true;
                 }
+
+
             }
         }
     }
 
-    public short getDueRent() {
+
+    public short getDueRent(Player player) {
         short numHouses = this.numHouses;
         short numHotels = this.numHotels;
-        if (this.numHotels > 0) {
-            return this.rentH;
-        } else if (this.numHouses == 4) {
-            return this.rent4;
-        } else if (this.numHouses == 3) {
-            return this.rent3;
-        } else if (this.numHouses == 2) {
-            return this.rent2;
-        } else if (this.numHouses == 1) {
-            return this.rent1;
-        } else {
-            if (allPropertiesOwnedByOwner) {
-                return (short) (this.rent * 2);
-            } else {
-                return this.rent;
-            }
-
+        String actionType = null;
+        Action action = this.getAction();
+        if (action != null) {
+            actionType = action.getActionType();
         }
+
+        String group = this.getGroup();
+        Property[] tiles = Board.getTiles();
+
+        if (player.getInJail()) {
+            return 0;
+        }
+
+        if (group.equals("Station")) {
+            int numOwned = 0;
+            for (Property tile : tiles) {
+                if (tile.getOwner() == this.owner && Objects.equals(tile.getGroup(), "Station")) {
+                    numOwned++;
+
+                }
+            }
+            switch (numOwned) {
+                case 1:
+                    return rent1;
+                case 2:
+                    return rent2;
+                case 3:
+                    return rent3;
+                case 4:
+                    return rent4;
+            }
+        }
+        if (actionType.equals("RollMultiple")) {
+            short lastRoll = player.getLastRoll();
+            if (this.isAllPropertiesOwnedByOwner()) {
+                return (short) (lastRoll * 10);
+            } else {
+                return (short) (lastRoll * 4);
+            }
+        } else {
+            if (this.numHotels > 0) {
+                return this.rentH;
+            } else if (this.numHouses == 4) {
+                return this.rent4;
+            } else if (this.numHouses == 3) {
+                return this.rent3;
+            } else if (this.numHouses == 2) {
+                return this.rent2;
+            } else if (this.numHouses == 1) {
+                return this.rent1;
+            } else {
+                if (allPropertiesOwnedByOwner) {
+                    return (short) (this.rent * 2);
+                } else {
+                    return this.rent;
+                }
+            }
+        }
+
     }
 
     public Short getCost() {
@@ -148,10 +221,6 @@ public class Property {
     }
 
     public void setCost(Short cost) {
-        this.cost = cost;
-    }
-
-    public void setCost(short cost) {
         this.cost = cost;
     }
 
@@ -169,14 +238,6 @@ public class Property {
 
     public void setOwner(Player owner) {
         this.owner = owner;
-    }
-
-    public String getAction() {
-        return this.action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
     }
 
     public Short getRent() {
@@ -255,6 +316,4 @@ public class Property {
     public String toString() {
         return "\nStreet Name: " + streetName + "cost: " + cost + "\n";
     }
-
-
 }

@@ -11,11 +11,11 @@ public class Bank {
         this.money = money;
     }
 
-    public void PayMoney(Short amount) {
+    public void payMoney(Short amount) {
         money = money - amount;
     }
 
-    public void GiveMoney(Short amount) {
+    public void giveMoney(Short amount) {
         money = money + amount;
     }
 
