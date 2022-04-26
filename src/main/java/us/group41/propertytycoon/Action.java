@@ -26,8 +26,8 @@ public class Action {
     public short performAction(List<Player> players, Board board) {
         Player player;
         player = board.getCurrentPlayer();
-        Short houses;
-        Short hotels;
+        short houses;
+        short hotels;
         int rent;
         switch (this.actionType) {
             case "Collect":
@@ -38,33 +38,48 @@ public class Action {
                 player.setCurrentPos(this.actionValue);
                 break;
             case "PayBank":
-                player.payMoney(this.actionValue);
-                board.bank.giveMoney(this.actionValue);
+                if (player.getMoney() < this.actionValue) {
+                    player.setBankrupt(true);
+                } else {
+                    player.payMoney(this.actionValue);
+                    board.bank.giveMoney(this.actionValue);
+                }
+
                 break;
             case "GoForward":
                 short curPos = (short) player.getCurrentPos();
                 player.setCurrentPos(this.actionValue);
                 if (curPos > this.actionValue) {
                     player.giveMoney((short) 200);  // player passed GO
+                    player.setPassedGO(true);
                 }
                 break;
             case "FineOpp":
-                // to do
-                return (1);
+                // handled in controller
+                break;
             case "PayFree":
-                player.payMoney(this.actionValue);
-                board.freeParking.addMoney(this.actionValue);
+                if (player.getMoney() < this.actionValue) {
+                    player.setBankrupt(true);
+                } else {
+                    player.payMoney(this.actionValue);
+                    board.freeParking.addMoney(this.actionValue);
+                }
                 break;
             case "Jail":
                 player.setCurrentPos(10);
                 player.setInJail(true);
+                player.setRollDoubleTimes((short) (0));  // reset number of doubles
                 break;
             case "CollectPlayer":
                 int currentPlayerNo = board.getCurrentPlayerNo();
                 for (int i = 0; i < board.getNumPlayers(); i++) {
                     if (i != currentPlayerNo) {
-                        players.get(i).payMoney(this.actionValue);
-                        players.get(currentPlayerNo).giveMoney(this.actionValue);
+                        if (players.get(i).getMoney() < this.actionValue) {
+                            players.get(i).setBankrupt(true);
+                        } else {
+                            players.get(i).payMoney(this.actionValue);
+                            players.get(currentPlayerNo).giveMoney(this.actionValue);
+                        }
                     }
                 }
             case "JailFree":
@@ -82,18 +97,26 @@ public class Action {
                 player.giveMoney(board.freeParking.getMoney());
                 break;
             case "HouseRepair1":
-                houses = player.getHouses(board, player);
-                hotels = player.getHotels(board, player);
+                houses = player.getHouses(player);
+                hotels = player.getHotels(player);
                 rent = ((houses * 40) + (hotels * 115));
-                player.payMoney((short) rent);
-                board.bank.giveMoney((short) rent);
+                if (player.getMoney() < this.actionValue) {
+                    player.setBankrupt(true);
+                } else {
+                    player.payMoney((short) rent);
+                    board.bank.giveMoney((short) rent);
+                }
                 break;
             case "HouseRepair2":
-                houses = player.getHouses(board, player);
-                hotels = player.getHotels(board, player);
+                houses = player.getHouses(player);
+                hotels = player.getHotels(player);
                 rent = ((houses * 25) + (hotels * 100));
-                player.payMoney((short) rent);
-                board.bank.giveMoney((short) rent);
+                if (player.getMoney() < this.actionValue) {
+                    player.setBankrupt(true);
+                } else {
+                    player.payMoney((short) rent);
+                    board.bank.giveMoney((short) rent);
+                }
                 break;
             case "MoveBack":
                 // to do
@@ -102,6 +125,7 @@ public class Action {
                 System.err.println("unknown action " + this.actionType);
                 break;
         }
+
         return 0;
     }
 }

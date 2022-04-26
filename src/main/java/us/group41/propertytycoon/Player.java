@@ -1,24 +1,48 @@
 package us.group41.propertytycoon;
 
 public class Player {
+
+
     private final int playerNum;
     public Token playerToken;
     private Integer money = 0;
-    private Boolean InJail = false;
+    private Boolean inJail = false;
     //private short position = 0;
     private int currentPos;
     private short rollDoubleTimes = 0;
     private short numJailFree = 0;
-
-
     private boolean passedGO = false;
-
-
     private short lastRoll;
+
+
+    private boolean isBankrupt = false;
+
+
+    private short jailRolls = 0;
 
     Player(int playerNum, Token token) {
         this.playerNum = playerNum;
         playerToken = token;
+    }
+
+    public int fetchPlayerNum() {
+        return playerNum;
+    }
+
+    public boolean isBankrupt() {
+        return isBankrupt;
+    }
+
+    public void setBankrupt(boolean bankrupt) {
+        isBankrupt = bankrupt;
+    }
+
+    public short getJailRolls() {
+        return jailRolls;
+    }
+
+    public void setJailRolls(short jailRolls) {
+        this.jailRolls = jailRolls;
     }
 
     public boolean isPassedGO() {
@@ -38,11 +62,11 @@ public class Player {
     }
 
     public Boolean getInJail() {
-        return InJail;
+        return inJail;
     }
 
     public void setInJail(Boolean inJail) {
-        InJail = inJail;
+        this.inJail = inJail;
     }
 
     public short getNumJailFree() {
@@ -99,7 +123,7 @@ public class Player {
         money = money + amount;
     }
 
-    public short getHouses(Board board, Player player) {
+    public short getHouses(Player player) {
         short numHouses = 0;
         for (int i = 0; i < Board.tiles.length; i++) {
             if (Board.tiles[i].getOwner() == player) {
@@ -109,7 +133,7 @@ public class Player {
         return numHouses;
     }
 
-    public short getHotels(Board board, Player player) {
+    public short getHotels(Player player) {
         short numHotels = 0;
         for (int i = 0; i < Board.tiles.length; i++) {
             if (Board.tiles[i].getOwner() == player) {
@@ -126,5 +150,17 @@ public class Player {
     @Override
     public String toString() {
         return "\nmoney: " + money + "\n";
+    }
+
+    public String status(Board board) {
+        String playerStatus = "\t" + this.playerToken;
+        if (this.playerToken == Token.BOOT) {
+            playerStatus = playerStatus + "\t";
+        } else if (this.playerToken.toString().length() < 8) {
+            playerStatus = playerStatus + "\t\t";
+        }
+
+        playerStatus = playerStatus + "\t" + this.money + "\t\t" + this.inJail + "\t\t" + this.isBankrupt + "\t\t" + this.getCurrentTile(board).getStreetName() + ".";
+        return playerStatus;
     }
 }

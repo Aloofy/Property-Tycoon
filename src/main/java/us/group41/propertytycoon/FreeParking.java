@@ -11,13 +11,11 @@ public class FreeParking {
     }
 
     public void addMoney(Short amount) {
-
-        // money += amount;
+        money = (short) (money + amount);
     }
 
     @Override
     public String toString() {
         return "\nmoney: " + money + "\n";
     }
-
 }

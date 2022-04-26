@@ -57,13 +57,14 @@ public class Property {
     }
 
     public boolean buyProperty(Player player, Bank bank) {
-        short cost = this.cost;
+
         if (this.owner != null || Objects.equals(this.group, "")) {
             return false;
         } else {
             if (!player.isPassedGO()) {
                 return false;
             } else {
+                short cost = this.getCost();
                 if (player.getMoney() < cost) {
                     return false;
                 } else {
@@ -77,88 +78,65 @@ public class Property {
 
     }
 
-    public boolean buyHouse(Player player, Bank bank) {
+    public boolean build(Player player, Bank bank) {
         short houseCost;
         if (owner != player || !allPropertiesOwnedByOwner) {
             return false;
-        } else {
-            houseCost = this.getHouseCost();
-            if (player.getMoney() < houseCost) {
-                return false;
-            } else {
-                short numHouses = this.getNumHouses();
-                if (numHouses == 4) {
-                    return false;
-                } else {
-                    short minHouses = 0;
-                    Property[] tiles = Board.getTiles();
-                    for (Property tile : tiles) {
-                        if (Objects.equals(this.group, tile.group)) {
-                            if (minHouses < tile.getNumHouses()) {
-                                minHouses = tile.getNumHouses();
-                            }
-                        }
-                    }
-                    if (this.numHouses > minHouses + 1) {  // you are trying to add a house which will result in a tile with 2 more houses than the rest
-                        return false;
-                    } else {
-                        player.payMoney(houseCost);
-                        bank.giveMoney(houseCost);
-                        this.setNumHouses((short) (numHouses + 1));
-                        return true;
-                    }
-
-
+        }
+        short minHouses = 0;
+        Property[] tiles = Board.getTiles();
+        for (Property tile : tiles) {
+            if (Objects.equals(this.group, tile.group)) {
+                if (minHouses < tile.getNumHouses()) {
+                    minHouses = tile.getNumHouses();
                 }
             }
         }
-    }
-
-    public boolean buyHotel(Player player, Bank bank) {
-        short hotelCost;
-        if (this.owner != player || !allPropertiesOwnedByOwner) {
-            return false;
-        } else {
-            hotelCost = this.hotelCost;
+        if (minHouses == 4) {
+            // buying a hotel
+            short hotelCost;
+            hotelCost = this.getHotelCost();
             if (player.getMoney() < hotelCost) {
                 return false;
             } else {
-                short minHouses = 0;
-                Property[] tiles = Board.getTiles();
-                for (Property tile : tiles) {
-                    if (Objects.equals(this.group, tile.group)) {
-                        if (minHouses < tile.getNumHouses()) {
-                            minHouses = tile.getNumHouses();
-                        }
-                    }
-                }
-                if (minHouses != 4) {
+                if (this.getNumHotels() == 1) {
                     return false;
                 } else {
-                    if (this.getNumHotels() == 1) {
-                        return false;
-                    } else {
-                        player.payMoney(hotelCost);
-                        bank.giveMoney(hotelCost);
-                        this.setNumHotels((short) 1);
-                        return true;
-                    }
-
+                    player.payMoney(hotelCost);
+                    bank.giveMoney(hotelCost);
+                    this.setNumHotels((short) 1);
+                    return true;
                 }
+            }
+        } else {
 
+            // buying a house
+            short numHouses = this.getNumHouses();
 
+            if (numHouses > minHouses + 1) {  // you are trying to add a house which will result in a tile with 2 more houses than the rest
+                return false;
+            } else {
+                houseCost = this.getHouseCost();
+                if (player.getMoney() < houseCost) {
+                    return false;
+                } else {
+                    player.payMoney(houseCost);
+                    bank.giveMoney(houseCost);
+                    this.setNumHouses((short) (numHouses + 1));
+                    return true;
+                }
             }
         }
     }
 
-
     public short getDueRent(Player player) {
-        short numHouses = this.numHouses;
-        short numHotels = this.numHotels;
-        String actionType = null;
+
+        String actionType;
         Action action = this.getAction();
         if (action != null) {
             actionType = action.getActionType();
+        } else {
+            actionType = "";
         }
 
         String group = this.getGroup();
@@ -195,21 +173,21 @@ public class Property {
                 return (short) (lastRoll * 4);
             }
         } else {
-            if (this.numHotels > 0) {
-                return this.rentH;
-            } else if (this.numHouses == 4) {
-                return this.rent4;
-            } else if (this.numHouses == 3) {
-                return this.rent3;
-            } else if (this.numHouses == 2) {
-                return this.rent2;
-            } else if (this.numHouses == 1) {
-                return this.rent1;
+            if (this.getNumHotels() > 0) {
+                return this.getRentH();
+            } else if (this.getNumHouses() == 4) {
+                return this.getRent4();
+            } else if (this.getNumHouses() == 3) {
+                return this.getRent3();
+            } else if (this.getNumHouses() == 2) {
+                return this.getRent2();
+            } else if (this.getNumHouses() == 1) {
+                return this.getRent1();
             } else {
                 if (allPropertiesOwnedByOwner) {
-                    return (short) (this.rent * 2);
+                    return (short) (this.getRent() * 2);
                 } else {
-                    return this.rent;
+                    return this.getRent();
                 }
             }
         }

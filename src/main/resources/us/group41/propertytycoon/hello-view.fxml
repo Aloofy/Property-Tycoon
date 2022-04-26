@@ -1,216 +1,479 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefHeight="546.0" prefWidth="543.0" spacing="20.0"
+<VBox xmlns:fx="http://javafx.com/fxml/1" id="Scene" alignment="CENTER" prefHeight="700.0" prefWidth="900.0"
       xmlns="http://javafx.com/javafx/16" fx:controller="us.group41.propertytycoon.HelloController">
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-   </padding>
-   <HBox alignment="CENTER_RIGHT" prefHeight="1000.0">
-      <children>
-         <VBox prefWidth="500.0">
-            <children>
-               <HBox prefHeight="100.0" prefWidth="200.0">
-                  <children>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                  </children>
-               </HBox>
-               <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
-                  <children>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                  </children>
-               </HBox>
-               <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
-                  <children>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                  </children>
-               </HBox>
-               <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
-                  <children>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                  </children>
-               </HBox>
-               <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
-                  <children>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                  </children>
-               </HBox>
-               <HBox layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0">
-                  <children>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                  </children>
-               </HBox>
-               <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
-                  <children>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                  </children>
-               </HBox>
-               <HBox layoutX="10.0" layoutY="94.0" prefHeight="100.0" prefWidth="200.0">
-                  <children>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                  </children>
-               </HBox>
-               <HBox layoutX="10.0" layoutY="178.0" prefHeight="100.0" prefWidth="200.0">
-                  <children>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                  </children>
-               </HBox>
-               <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
-                  <children>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                     <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0"/>
-                  </children>
-               </HBox>
-            </children>
+   <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="10000.0"
+         prefWidth="10000.0">
+      <GridPane prefHeight="10000.0" style="-fx-background-color: C6E3CC;">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+         </rowConstraints>
+         <opaqueInsets>
+            <Insets/>
+         </opaqueInsets>
+         <StackPane layoutX="11.0" layoutY="74.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;">
+            <Label fx:id="name0" contentDisplay="CENTER"/>
+         </StackPane>
+         <StackPane layoutX="133.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="1">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group1" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name1"/>
+               <Label fx:id="owner1"/>
+               <Label fx:id="cost1"/>
+            </VBox>
+         </StackPane>
+         <StackPane prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="2">
+            <Label fx:id="name2"/>
+         </StackPane>
+         <StackPane layoutX="133.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="3">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group3" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name3"/>
+               <Label fx:id="owner3"/>
+               <Label fx:id="cost3"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="194.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="4">
+            <Label fx:id="name4"/>
+         </StackPane>
+         <StackPane alignment="TOP_CENTER" layoutX="255.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="5">
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <Label fx:id="group5"/>
+               <Label fx:id="name5"/>
+               <Label fx:id="owner5"/>
+               <Label fx:id="cost5"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="316.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="6">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group6" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name6"/>
+               <Label fx:id="owner6"/>
+               <Label fx:id="cost6"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="377.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="7">
+            <Label fx:id="name7"/>
+         </StackPane>
+         <StackPane layoutX="438.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="8">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group8" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name8"/>
+               <Label fx:id="owner8"/>
+               <Label fx:id="cost8"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="499.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="9">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group9" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name9"/>
+               <Label fx:id="owner9"/>
+               <Label fx:id="cost9"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="560.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="10">
+            <Label fx:id="name10"/>
+         </StackPane>
+         <StackPane layoutX="621.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="10" GridPane.rowIndex="1">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group11" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name11"/>
+               <Label fx:id="owner11"/>
+               <Label fx:id="cost11"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="621.0" layoutY="74.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="10" GridPane.rowIndex="2">
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <Label fx:id="group12"/>
+               <Label fx:id="name12"/>
+               <Label fx:id="owner12"/>
+               <Label fx:id="cost12"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="621.0" layoutY="137.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="10" GridPane.rowIndex="3">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group13" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name13"/>
+               <Label fx:id="owner13"/>
+               <Label fx:id="cost13"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="621.0" layoutY="200.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="10" GridPane.rowIndex="4">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group14" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name14"/>
+               <Label fx:id="owner14"/>
+               <Label fx:id="cost14"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="621.0" layoutY="263.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="10" GridPane.rowIndex="5">
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <Label fx:id="group15"/>
+               <Label fx:id="name15"/>
+               <Label fx:id="owner15"/>
+               <Label fx:id="cost15"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="621.0" layoutY="326.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="10" GridPane.rowIndex="6">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group16" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name16"/>
+               <Label fx:id="owner16"/>
+               <Label fx:id="cost16"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="621.0" layoutY="389.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="10" GridPane.rowIndex="7">
+            <Label fx:id="name17"/>
+         </StackPane>
+         <StackPane layoutX="621.0" layoutY="452.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="10" GridPane.rowIndex="8">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group18" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name18"/>
+               <Label fx:id="owner18"/>
+               <Label fx:id="cost18"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="621.0" layoutY="515.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="10" GridPane.rowIndex="9">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group19" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name19"/>
+               <Label fx:id="owner19"/>
+               <Label fx:id="cost19"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="560.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="10" GridPane.rowIndex="10">
+            <Label fx:id="name20"/>
+         </StackPane>
+         <StackPane layoutX="621.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="9" GridPane.rowIndex="10">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group21" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name21"/>
+               <Label fx:id="owner21"/>
+               <Label fx:id="cost21"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="560.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="8" GridPane.rowIndex="10">
+            <Label fx:id="name22"/>
+         </StackPane>
+         <StackPane layoutX="499.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="7" GridPane.rowIndex="10">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group23" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name23"/>
+               <Label fx:id="owner23"/>
+               <Label fx:id="cost23"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="438.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="6" GridPane.rowIndex="10">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group24" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name24"/>
+               <Label fx:id="owner24"/>
+               <Label fx:id="cost24"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="377.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="5" GridPane.rowIndex="10">
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <Label fx:id="group25"/>
+               <Label fx:id="name25"/>
+               <Label fx:id="owner25"/>
+               <Label fx:id="cost25"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="316.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="4" GridPane.rowIndex="10">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group26" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name26"/>
+               <Label fx:id="owner26"/>
+               <Label fx:id="cost26"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="255.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="3" GridPane.rowIndex="10">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group27" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name27"/>
+               <Label fx:id="owner27"/>
+               <Label fx:id="cost27"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="194.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="2" GridPane.rowIndex="10">
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <Label fx:id="group28"/>
+               <Label fx:id="name28"/>
+               <Label fx:id="owner28"/>
+               <Label fx:id="cost28"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="133.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="1" GridPane.rowIndex="10">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group29" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name29"/>
+               <Label fx:id="owner29"/>
+               <Label fx:id="cost29"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="72.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="10">
+            <Label fx:id="name30"/>
+         </StackPane>
+         <StackPane layoutX="11.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="9">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group31" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name31"/>
+               <Label fx:id="owner31"/>
+               <Label fx:id="cost31"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="11.0" layoutY="578.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="8">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group32" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name32"/>
+               <Label fx:id="owner32"/>
+               <Label fx:id="cost32"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="11.0" layoutY="515.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="7">
+            <Label fx:id="name33"/>
+         </StackPane>
+         <StackPane layoutX="11.0" layoutY="452.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="6">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group34" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name34"/>
+               <Label fx:id="owner34"/>
+               <Label fx:id="cost34"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="11.0" layoutY="389.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="5">
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <Label fx:id="group35"/>
+               <Label fx:id="name35"/>
+               <Label fx:id="owner35"/>
+               <Label fx:id="cost35"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="11.0" layoutY="326.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="4">
+            <Label fx:id="name36"/>
+         </StackPane>
+         <StackPane layoutX="11.0" layoutY="263.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="3">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group37" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name37"/>
+               <Label fx:id="owner37"/>
+               <Label fx:id="cost37"/>
+            </VBox>
+         </StackPane>
+         <StackPane layoutX="11.0" layoutY="200.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="2">
+            <Label fx:id="name38"/>
+         </StackPane>
+         <StackPane layoutX="11.0" layoutY="137.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="1">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group39" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name39"/>
+               <Label fx:id="owner39"/>
+               <Label fx:id="cost39"/>
+            </VBox>
+         </StackPane>
+      </GridPane>
+      <VBox alignment="CENTER_RIGHT" prefWidth="650.0">
+         <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
+            <HBox alignment="CENTER" prefHeight="26.0" prefWidth="503.0">
+               <Button fx:id="addPlayerButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+                       onMouseClicked="#onAddPlayerButtonClick" text="Add Player"/>
+               <ComboBox id="playerTokenComboBox" fx:id="playerTokenComboBox"
+                         onMouseClicked="#onPlayerTokenComboBoxClick" prefHeight="25.0" prefWidth="147.0"
+                         promptText="Choose Game Piece"/>
+            </HBox>
+            <Label id="addPlayerLabel" fx:id="addPlayerLabel"/>
          </VBox>
-         <VBox alignment="CENTER_RIGHT">
-            <children>
-               <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
-                  <HBox alignment="TOP_CENTER" prefHeight="26.0" prefWidth="304.0">
-                     <Button fx:id="endTurnButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                             onMouseClicked="#onEndTurnButtonClick" text="End Turn" textAlignment="CENTER"/>
-                  </HBox>
-                  <Label id="movePlayerLabel" fx:id="movePlayerLabel"/>
-               </VBox>
-               <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
-                  <HBox alignment="CENTER" prefHeight="26.0" prefWidth="503.0">
-                     <Button mnemonicParsing="false" onMouseClicked="#onStartGameButtonClick" text="Start Game"
-                             textAlignment="CENTER"/>
-                     <Label id="notIntLabel" fx:id="notIntLabel"/>
-                  </HBox>
-                  <Label id="startGameLabel" fx:id="startGameLabel"/>
-               </VBox>
-               <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
-                  <HBox alignment="CENTER" prefHeight="26.0" prefWidth="503.0">
-                     <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                             onMouseClicked="#onAddPlayerButtonClick" text="Add Player"/>
-                     <ComboBox id="playerTokenComboBox" fx:id="playerTokenComboBox"
-                               onMouseClicked="#onPlayerTokenComboBoxClick" prefWidth="150.0"
-                               promptText="Choose Game Piece"/>
-                  </HBox>
-                  <Label id="addPlayerLabel" fx:id="addPlayerLabel"/>
-               </VBox>
-               <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
-                  <HBox alignment="CENTER" prefHeight="26.0" prefWidth="503.0">
-                     <Button id="rollDiceButton" fx:id="rollDiceButton" mnemonicParsing="false"
-                             onMouseClicked="#rollDice" text="Roll Dice &amp; Move"/>
-                  </HBox>
-                  <Label id="rollDiceLabel" fx:id="rollDiceLabel"/>
-               </VBox>
-               <VBox alignment="CENTER" layoutX="10.0" layoutY="313.0" prefHeight="50.0" prefWidth="503.0">
-                  <children>
-                     <HBox alignment="CENTER" prefHeight="26.0" prefWidth="503.0">
-                        <children>
-                           <Button id="buyPropertyButton" fx:id="buyPropertyButton" mnemonicParsing="false"
-                                   onMouseClicked="#onBuyPropertyButtonClick" text="Buy Property"/>
-                        </children>
-                     </HBox>
-                     <Label id="buyPropertyLabel" fx:id="buyPropertyLabel"/>
-                  </children>
-               </VBox>
-            </children>
+         <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
+            <Button id="startGameButton" fx:id="startGameButton" disable="true" mnemonicParsing="false"
+                    onMouseClicked="#onStartGameButtonClick" text="Start Game" textAlignment="CENTER"/>
+            <Label id="startGameLabel" fx:id="startGameLabel"/>
          </VBox>
-      </children>
+         <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
+            <Button id="rollDiceButton" fx:id="rollDiceButton" disable="true" mnemonicParsing="false"
+                    onMouseClicked="#rollDice" text="Roll Dice &amp; Move"/>
+            <Label id="rollDiceLabel" fx:id="rollDiceLabel"/>
+            <Label id="rollDiceActionLabel" fx:id="rollDiceActionLabel"/>
+         </VBox>
+         <VBox alignment="CENTER" layoutX="10.0" layoutY="313.0" prefHeight="50.0" prefWidth="503.0">
+            <Button id="buyPropertyButton" fx:id="buyPropertyButton" disable="true" mnemonicParsing="false"
+                    onMouseClicked="#onBuyPropertyButtonClick" text="Buy Property"/>
+            <Label id="buyPropertyLabel" fx:id="buyPropertyLabel"/>
+         </VBox>
+         <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
+            <Button id="endTurnButton" fx:id="endTurnButton" alignment="CENTER" contentDisplay="CENTER" disable="true"
+                    mnemonicParsing="false" onMouseClicked="#onEndTurnButtonClick" text="End Turn"
+                    textAlignment="CENTER"/>
+            <Label id="movePlayerLabel" fx:id="endTurnLabel"/>
+         </VBox>
+         <VBox alignment="CENTER" layoutX="10.0" layoutY="338.0" prefHeight="50.0" prefWidth="503.0">
+            <Button id="payOutOfJailButton" fx:id="payOutOfJailButton" alignment="CENTER" contentDisplay="CENTER"
+                    disable="true" mnemonicParsing="false" onMouseClicked="#onPayOutOfJailButtonClick"
+                    text="Pay £50 To Get Out Of Jail" textAlignment="CENTER"/>
+            <Button id="getOutJailFreeButton" fx:id="getOutJailFreeButton" alignment="CENTER" contentDisplay="CENTER"
+                    disable="true" mnemonicParsing="false" onMouseClicked="#onGetOutJailFreeButtonClick"
+                    text="Use &quot;Get Out Of Jail Free&quot; Card" textAlignment="CENTER"/>
+            <Label id="jailLabel" fx:id="jailLabel"/>
+         </VBox>
+         <VBox alignment="CENTER" layoutX="10.0" layoutY="305.0" prefHeight="50.0" prefWidth="503.0">
+            <HBox alignment="TOP_CENTER" prefHeight="26.0" prefWidth="304.0">
+               <Button id="pay10Button" fx:id="pay10Button" alignment="CENTER" contentDisplay="CENTER" disable="true"
+                       mnemonicParsing="false" onMouseClicked="#onPay10ButtonClick" text="Pay £10"
+                       textAlignment="CENTER"/>
+               <Button id="opportunityKnockButton" fx:id="opportunityKnockButton" alignment="CENTER"
+                       contentDisplay="CENTER" disable="true" layoutX="108.0" layoutY="10.0" mnemonicParsing="false"
+                       onMouseClicked="#onOpportunityKnockButtonClick" text="Pick Up Opportunity Knock"
+                       textAlignment="CENTER"/>
+            </HBox>
+            <Label id="potLuckChoiceLabel" fx:id="potLuckChoiceLabel"/>
+         </VBox>
+         <VBox alignment="CENTER" layoutX="10.0" layoutY="397.0" prefHeight="50.0" prefWidth="503.0">
+            <HBox alignment="TOP_CENTER" prefHeight="26.0" prefWidth="304.0">
+               <Button id="addBuildingButton" fx:id="addBuildingButton" alignment="CENTER" contentDisplay="CENTER"
+                       disable="true" mnemonicParsing="false" onMouseClicked="#onAddBuildingButtonClick"
+                       text="Add Building" textAlignment="CENTER"/>
+               <TextField id="addBuildingTextField" fx:id="addBuildingTextField" disable="true" prefHeight="25.0"
+                          prefWidth="99.0" promptText="Street Name/ID"/>
+            </HBox>
+            <Label id="addBuildingLabel" fx:id="addBuildingLabel"/>
+         </VBox>
+         <VBox alignment="CENTER" layoutX="10.0" layoutY="417.0" prefHeight="50.0" prefWidth="503.0">
+            <HBox alignment="TOP_CENTER" prefHeight="26.0" prefWidth="304.0">
+               <Button id="sellPropertyButton" fx:id="sellPropertyButton" alignment="CENTER" contentDisplay="CENTER"
+                       disable="true" mnemonicParsing="false" onMouseClicked="#onSellPropertyButtonClick"
+                       text="Sell Property" textAlignment="CENTER"/>
+               <TextField id="sellPropertyTextField" fx:id="sellPropertyTextField" disable="true" prefHeight="25.0"
+                          prefWidth="99.0" promptText="Street Name/ID"/>
+            </HBox>
+            <Label id="sellPropertyLabel" fx:id="sellPropertyLabel"/>
+         </VBox>
+         <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+            <VBox.margin>
+               <Insets/>
+            </VBox.margin>
+            <Label id="player1Label" fx:id="player1Label" alignment="TOP_CENTER">
+               <VBox.margin>
+                  <Insets/>
+               </VBox.margin>
+            </Label>
+            <Label id="player2Label" fx:id="player2Label" alignment="TOP_CENTER">
+               <VBox.margin>
+                  <Insets/>
+               </VBox.margin>
+            </Label>
+            <Label id="player3Label" fx:id="player3Label" alignment="TOP_CENTER">
+               <VBox.margin>
+                  <Insets/>
+               </VBox.margin>
+            </Label>
+            <Label id="player4Label" fx:id="player4Label" alignment="TOP_CENTER">
+               <VBox.margin>
+                  <Insets/>
+               </VBox.margin>
+            </Label>
+            <Label id="player5Label" fx:id="player5Label" alignment="TOP_CENTER">
+               <VBox.margin>
+                  <Insets/>
+               </VBox.margin>
+               <opaqueInsets>
+                  <Insets/>
+               </opaqueInsets>
+            </Label>
+         </VBox>
+      </VBox>
    </HBox>
 </VBox>
