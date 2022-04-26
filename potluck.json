@@ -1,0 +1,114 @@
+[
+  {
+    "description": "You inherit £200",
+    "action": {
+      "actionType": "Collect",
+      "actionValue": 200
+    }
+  },
+  {
+    "description": "You have won 2nd prize in a beauty contest, collect £50",
+    "action": {
+      "actionType": "Collect",
+      "actionValue": 50
+    }
+  },
+  {
+    "description": "You are up the creek with no paddle - go back to the Old Creek",
+    "action": {
+      "actionType": "GoBack",
+      "actionValue": 1
+    }
+  },
+  {
+    "description": "Student loan refund. Collect £20",
+    "action": {
+      "actionType": "Collect",
+      "actionValue": 20
+    }
+  },
+  {
+    "description": "Pay bill for text books of £100",
+    "action": {
+      "actionType": "PayBank",
+      "actionValue": 100
+    }
+  },
+  {
+    "description": "Mega late night taxi bill pay £50",
+    "action": {
+      "actionType": "PayBank",
+      "actionValue": 50
+    }
+  },
+  {
+    "description": "Advance to go",
+    "action": {
+      "actionType": "GoForward",
+      "actionValue": 0
+    }
+  },
+  {
+    "description": "From sale of Bitcoin you get £50",
+    "action": {
+      "actionType": "Collect",
+      "actionValue": 50
+    }
+  },
+  {
+    "description": "Bitcoin assets fall - pay off Bitcoin short fall",
+    "action": {
+      "actionType": "PayBank",
+      "actionValue": 50
+    }
+  },
+  {
+    "description": "Pay a £10 fine or take opportunity knocks",
+    "action": {
+      "actionType": "FineOpp",
+      "actionValue": 10
+    }
+  },
+  {
+    "description": "Pay insurance fee of £50",
+    "action": {
+      "actionType": "PayFree",
+      "actionValue": 50
+    }
+  },
+  {
+    "description": "Savings bond matures, collect £100",
+    "action": {
+      "actionType": "Collect",
+      "actionValue": 100
+    }
+  },
+  {
+    "description": "Go to jail. Do not pass GO, do not collect £200",
+    "action": {
+      "actionType": "Jail",
+      "actionValue": 0
+    }
+  },
+  {
+    "description": "Received interest on shares of £25",
+    "action": {
+      "actionType": "Collect",
+      "actionValue": 25
+    }
+  },
+  {
+    "description": "It's your birthday. Collect £10 from each player",
+    "action": {
+      "actionType": "CollectPlayer",
+      "actionValue": 10
+    }
+  },
+  {
+    "description": "Get out of jail free",
+    "action": {
+      "actionType": "JailFree",
+      "actionValue": 0
+    }
+  }
+]
