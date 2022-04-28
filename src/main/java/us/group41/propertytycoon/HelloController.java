@@ -9,25 +9,33 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import org.apache.commons.text.WordUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
+/**
+ * This class is used to control the ui and handles generic logic where it needs to output messages to the UI.
+ *
+ * @author 235288
+ * @version 0.5.1
+ * @since 29/04/2022
+ */
 public class HelloController {
     private final Board playingBoard = new Board();
-    private final int t = 1;
-    public Button rollDiceButton, endTurnButton, buyPropertyButton, pay10Button, startGameButton, payOutOfJailButton, getOutJailFreeButton, addBuildingButton, opportunityKnockButton, bankruptButton;
-    public Label startGameLabel, rollDiceLabel, addPlayerLabel, rollDiceActionLabel, buyPropertyLabel, potLuckChoiceLabel, jailLabel, addBuildingLabel;
+    public Button rollDiceButton, endTurnButton, buyPropertyButton, pay10Button, startGameButton, payOutOfJailButton, getOutJailFreeButton, addBuildingButton, opportunityKnockButton, bankruptButton, addRobotButton, addPlayerButton, sellPropertyButton;
+    public Label startGameLabel, rollDiceLabel, addPlayerLabel, rollDiceActionLabel, buyPropertyLabel, potLuckChoiceLabel, jailLabel, addBuildingLabel, sellPropertyLabel, bankruptLabel, endTurnLabel;
+    boolean tokenFirstTime = true, playerFirstTime = true;
+    private short bankDebtAmount = 0;
+    private short playerDebtAmount = 0;
     public TextField addBuildingTextField;
-    public Button sellPropertyButton;
     public ComboBox playerTokenComboBox;
     public TextField sellPropertyTextField;
-    public Label sellPropertyLabel;
     public StackPane tile0, tile1, tile2, tile3, tile4, tile5, tile6, tile7, tile8, tile9, tile10, tile11, tile12, tile13, tile14, tile15, tile16, tile17, tile18, tile19, tile20, tile21, tile22, tile23, tile24, tile25, tile26, tile27, tile28, tile29, tile30, tile31, tile32, tile33, tile34, tile35, tile36, tile37, tile38, tile39;
     public Label name0, name1, name2, name3, name4, name5, name6, name7, name8, name9, name10, name11, name12, name13, name14, name15, name16, name17, name18, name19, name20, name21, name22, name23, name24, name25, name26, name27, name28, name29, name30, name31, name32, name33, name34, name35, name36, name37, name38, name39;
 
     int playerInt = 0;
-    boolean tokenFirstTime = true;
+    private short freeParkingDebtAmount = 0;
     public Label owner1, owner3, owner5, owner6, owner8, owner9, owner11, owner12, owner13, owner14, owner15, owner16, owner18, owner19, owner21, owner23, owner24, owner25, owner26, owner27, owner28, owner29, owner31, owner32, owner34, owner35, owner37, owner39;
     public Label cost1, cost3, cost5, cost6, cost8, cost9, cost11, cost12, cost13, cost14, cost15, cost16, cost18, cost19, cost21, cost23, cost24, cost25, cost26, cost27, cost28, cost29, cost31, cost32, cost34, cost35, cost37, cost39;
     public StackPane group1, group3, group6, group8, group9, group11, group13, group14, group16, group18, group19, group21, group23, group24, group26, group27, group29, group31, group32, group34, group37, group39;
@@ -36,10 +44,10 @@ public class HelloController {
     Label[] boardNameLabels = new Label[40], boardOwnerLabels = new Label[40], boardCostLabels = new Label[40];
     Object[] boardGroupLabels = new Object[40];
     StackPane[] boardStackPanes = new StackPane[40];
-    private short bankDebtAmount = 0;
-    private short playerDebtAmount = 0;
-    private short freeDebtAmount = 0;
 
+    /**
+     * Adds the tokens to the token combo box on click
+     */
     @FXML
     protected void onPlayerTokenComboBoxClick() {
         if (tokenFirstTime) {
@@ -48,6 +56,9 @@ public class HelloController {
         }
     }
 
+    /**
+     * Disables and enables many buttons to prepare for the next player's turn, also checks if the game is over, or if it needs to have the robot automatically have its turn.
+     */
     @FXML
     protected void onEndTurnButtonClick() {
         endTurnButton.setDisable(true);
@@ -55,7 +66,6 @@ public class HelloController {
         addBuildingLabel.setText("");
         addBuildingTextField.setText("");
         buyPropertyLabel.setText("");
-
         if (!Board.endTurn()) {
             startGameLabel.setText("Player" + playingBoard.getCurrentPlayer().getPlayerToken() + " has won");
             rollDiceButton.setDisable(true);
@@ -63,12 +73,14 @@ public class HelloController {
             playingBoard.endGame();
             startGameButton.setDisable(false);
         } else {
+            if (playingBoard.getCurrentPlayer().isRobot()) {
+                autoMove();
+            }
             if (playingBoard.getCurrentPlayer().getInJail()) {
                 payOutOfJailButton.setDisable(false);
                 if (playingBoard.getCurrentPlayer().getNumJailFree() > 0) {
                     getOutJailFreeButton.setDisable(false);
                 }
-
             } else {
                 payOutOfJailButton.setDisable(true);
                 getOutJailFreeButton.setDisable(true);
@@ -82,29 +94,22 @@ public class HelloController {
         rollDiceActionLabel.setText("");
     }
 
+    /**
+     * Adds a player and enables you to add 1 robot player
+     */
     @FXML
     protected void onAddPlayerButtonClick() {
-        Player.Token token = (Player.Token) playerTokenComboBox.getValue();
-        if (token == null) {
-            addPlayerLabel.setText("Please select a valid token.");
-            return;
-        }
-        playerInt += 1;
-        if (playerInt <= 5) {
-            if (Board.addPlayer(playerInt, token)) {
-                addPlayerLabel.setText("Player" + playerInt + " has been added to the game with the " + WordUtils.capitalizeFully(String.valueOf(token)) + " token. " + playerInt + "/5");
-            } else {
-                addPlayerLabel.setText("failed to add player");
+        if (addPlayer(false)) {
+            if (playerFirstTime) {
+                addRobotButton.setDisable(false);
+                playerFirstTime = false;
             }
-
-        } else {
-            addPlayerLabel.setText("Maximum of 5 players added. Please start the game.");
         }
-        startGameButton.setDisable(false);
-        startGameButton.setVisible(true);
-
     }
 
+    /**
+     * Attempts to start the game, if successful loads the board
+     */
     @FXML
     protected void onStartGameButtonClick() {
         if (playerInt > 0) {
@@ -121,18 +126,224 @@ public class HelloController {
         rollDiceButton.setVisible(true);
         rollDiceButton.setDisable(false);
         addPlayerLabel.setText("");
-        addBuildingButton.setDisable(false);
+        addBuildingButton.setDisable(true);
         addBuildingTextField.setDisable(false);
         startGameButton.setDisable(true);
         for (int i = 0; i < Board.getPlayers().size(); i++) {
             showPlayer(Board.getPlayers().get(i));
         }
-
-
     }
 
+    /**
+     * Makes the robot have its turn. automatically buys properties as long as it's got £500 more than the cost of the property and houses/hotels if it's got £1000.
+     */
+    public void autoMove() {
+        Random random = new Random();
+        int[] rolls;
+        int firstRoll;
+        int secondRoll;
+        int totalRoll;
+        Boolean rollDice; // indicates another roll is required.
+        // while throwing doubles and not in jail
+        do {
+            rolls = random.ints(2, 1, 6).toArray();
+            firstRoll = rolls[0];
+            secondRoll = rolls[1];
+            totalRoll = firstRoll + secondRoll;
+            rollDice = playingBoard.rolledDice(totalRoll, firstRoll == secondRoll);
+            playingBoard.getCurrentPlayer().setLastRoll((short) totalRoll); // save last roll for utilities rent calculation
+            Player player = playingBoard.getCurrentPlayer();
+            Property property = player.getCurrentTile();
+            Action action = property.getAction();
+            Card card = null;
+            String actionType = null;
+            if (action != null) {
+                actionType = action.getActionType();
+            }
+            if (actionType != null && !actionType.equals("RollMultiple")) {
+                // property action
+                switch (actionType) {
+                    case "PotLuck" -> card = takeCard("PotLuck", Board.getPlayers(), playingBoard);
+                    case "Opportunity" -> card = takeCard("Opportunity", Board.getPlayers(), playingBoard);
+                    case "PayBank" ->
+                            bankDebtAmount = property.getAction().performAction(Board.getPlayers(), playingBoard);
+                    case "Collect", "FreeParking", "Jail" ->
+                            property.getAction().performAction(Board.getPlayers(), playingBoard);
+                }
+            }
+            if (card != null) {
+                if (Objects.equals(card.getAction().getActionType(), "FineOpp")) {
+                    if (playingBoard.getCurrentPlayer().getMoney() >= 10) {
+                        playingBoard.getCurrentPlayer().payMoney((short) 10);  // what if not have £10
+                        playingBoard.freeParking.addMoney((short) 10);
+                    } else {
+                        //bankrupt or opportunity
+                    }
+                }
+                if (Objects.equals(card.getAction().getActionType(), "MoveBack")) {
+                    playingBoard.movePlayerBack(card.getAction().getActionValue());
+                }
+            }
+            Player owner = property.getOwner();
+            if (owner != null && owner != player) {
+                // calculate any rent due
+                short rent = property.getDueRent(player);
+                if (player.getMoney() < rent) {
+                    playerDebtAmount = rent;
+                } else {
+                    player.payMoney(rent);
+                    owner.giveMoney(rent);
+                }
+            } else {
+                if (!property.getGroup().equals("")) {
+                    if (player.isPassedGO()) {
+                        if ((player.getMoney() - property.getCost()) > 500) { // buy property if over 500 left once brought
+                            if (playingBoard.buyProperty(property)) {
+                                updateOwner(player, property);
+                            }
+                        }
+                    }
+                }
+            }
+            // find my properties
+            List<Property> myProperties = new ArrayList<>();
+            Property[] tiles = Board.getTiles();
+            for (Property tile : tiles) {
+                if (tile.getOwner() == player) {
+                    myProperties.add(tile);
+                }
+            }
+            short money = 0;
+            if (freeParkingDebtAmount != 0 || bankDebtAmount != 0 || playerDebtAmount != 0) {
+                short debt = 0;
+                if (debt < freeParkingDebtAmount) {
+                    debt = freeParkingDebtAmount;
+                } else if (debt < bankDebtAmount) {
+                    debt = bankDebtAmount;
+                } else if (debt < playerDebtAmount) {
+                    debt = playerDebtAmount;
+                }
+                while (player.getMoney() < debt) {
+                    // find site with most houses. if all have 0 houses then it will mortgage or sell the property
+                    Property maxHouses;
+                    if (myProperties.size() > 0) {
+                        maxHouses = myProperties.get(0);
+                    } else {
+                        player.setBankrupt(true);
+                        break;
+                    }
+                    for (Property tile : myProperties) {
+                        if (tile.getNumHotels() == 1 || tile.getNumHouses() > maxHouses.getNumHouses()) {
+                            maxHouses = tile;
+                        }
+                    }
+                    money = maxHouses.sellProperty();
+                    if (maxHouses.getOwner() == null) {
+                        updateOwner(null, maxHouses);
+                        //Set other properties in the same group to not all be owned by the same owner
+                        for (Property tile : tiles) {
+                            if (Objects.equals(maxHouses.getGroup(), tile.getGroup())) {
+                                tile.setAllPropertiesOwnedByOwner(false);
+                            }
+                        }
+                        myProperties.remove(maxHouses);
+                    } else {
+                        updateOwner(player, maxHouses);
+                    }
+                    player.giveMoney(money);
+                    playingBoard.bank.payMoney(money);
+                }
+                if (freeParkingDebtAmount != 0) {
+                    if (!player.isBankrupt()) {
+                        //give as much money as possible to the source of debt
+                        playingBoard.freeParking.addMoney(money);
+                        player.payMoney(money);
+                    } else {
+                        playingBoard.freeParking.addMoney(player.getMoney());
+                        player.payMoney(player.getMoney());
+                    }
+                    freeParkingDebtAmount = 0;
+                }
+                if (bankDebtAmount != 0) {
+                    if (!player.isBankrupt()) {
+                        playingBoard.bank.giveMoney(money);
+                        player.payMoney(money);
+                    } else {
+                        playingBoard.bank.giveMoney(player.getMoney());
+                        player.payMoney(player.getMoney());
+                    }
+                    bankDebtAmount = 0;
+                }
+                if (playerDebtAmount != 0) {
+                    if (!player.isBankrupt()) {
+                        owner.giveMoney(money);
+                        player.payMoney(money);
+                    } else {
+                        owner.giveMoney(player.getMoney());
+                        player.payMoney(player.getMoney());
+                    }
+                    playerDebtAmount = 0;
+                }
+            }
+            if (player.getMoney() > 1000 && myProperties.size() != 0) {
+                //do some building if we have enough money and some properties build on properties with the smallest number of houses first
+                Property minHouses = myProperties.get(0);
+                for (Property tile : myProperties) {
+                    if (tile.getNumHotels() == 0 || tile.getNumHouses() < minHouses.getNumHouses()) {
+                        //only build if you own all properties
+                        if (tile.isAllPropertiesOwnedByOwner()) {
+                            minHouses = tile;
+                        }
+                    }
+                }
+                // put one house/ hotel on each property
+                if (minHouses.isAllPropertiesOwnedByOwner()) {
+                    for (Property tile : myProperties) {
+                        if (minHouses.getGroup().equals(tile.getGroup()) && !tile.getGroup().equals("Station") && !tile.getGroup().equals("Utilities")) {
+                            if (tile.build(player, playingBoard.bank)) {
+                                updateOwner(player, tile);
+                            }
+                        }
+                    }
+                }
+            }
+            showPlayer(playingBoard.getCurrentPlayer());
+        } while (rollDice);
+        if (!Board.endTurn()) {
+            startGameLabel.setText("Player" + playingBoard.getCurrentPlayer().getPlayerToken() + " has won");
+            rollDiceButton.setDisable(true);
+            addBuildingButton.setDisable(true);
+            playingBoard.endGame();
+            startGameButton.setDisable(false);
+        } else {
+            if (playingBoard.getCurrentPlayer().getInJail()) {
+                payOutOfJailButton.setDisable(false);
+                if (playingBoard.getCurrentPlayer().getNumJailFree() > 0) {
+                    getOutJailFreeButton.setDisable(false);
+                }
+            } else {
+                payOutOfJailButton.setDisable(true);
+                getOutJailFreeButton.setDisable(true);
+            }
+        }
+        if (playingBoard.getCurrentPlayer().isPassedGO()) {
+            addBuildingButton.setDisable(false);
+        }
+        pay10Button.setDisable(true);
+        opportunityKnockButton.setDisable(true);
+        potLuckChoiceLabel.setText("");
+        rollDiceLabel.setText("Player" + (playingBoard.getCurrentPlayerNo() + 1));
+        rollDiceActionLabel.setText("");
+        for (Player showPlayer : Board.getPlayers()) {
+            showPlayer(showPlayer);
+        }
+    }
+
+    /**
+     * Performs the player's move, displays what happened and sets buttons ready for the next situation
+     */
     @FXML
-    protected void onRollDiceButtonClick() throws InterruptedException {
+    protected void onRollDiceButtonClick() {
         Random random = new Random();
         int[] rolls = random.ints(2, 1, 6).toArray();
         int firstRoll = rolls[0];
@@ -144,50 +355,42 @@ public class HelloController {
         jailLabel.setText("");
         addBuildingLabel.setText("");
 
-        //testing
-
         int totalRoll = firstRoll + secondRoll;
         if (playingBoard.rolledDice(totalRoll, firstRoll == secondRoll)) {
             rollDiceButton.setDisable(false);
             endTurnButton.setDisable(true);
             rollDiceActionLabel.setText("Roll Again as Rolled Double");
-            //endTurnButton.setVisible(false);
         } else {
             rollDiceButton.setDisable(true);
             endTurnButton.setDisable(false);
-            //endTurnButton.setVisible(true);
         }
 
         playingBoard.getCurrentPlayer().setLastRoll((short) totalRoll); // save last roll for utilities rent calculation
-
         Player player = playingBoard.getCurrentPlayer();
-        Property property = player.getCurrentTile(playingBoard);
+        Property property = player.getCurrentTile();
         String streetName = property.getStreetName();
         Action action = property.getAction();
         rollDiceLabel.setText("Player" + (playingBoard.getCurrentPlayerNo() + 1) + " has rolled a " + firstRoll + " and a " + secondRoll + " and moved to " + streetName + ".");
-
         Card card = null;
         String actionType = null;
         short actionValue = 0;
         if (action != null) {
             actionType = action.getActionType();
             actionValue = action.getActionValue();
-
         }
-
         // if the card is a normal property (or one of the utilities) then don't perform action
         if (actionType != null && !actionType.equals("RollMultiple")) {
             // property action
             switch (actionType) {
-                case "PotLuck":
+                case "PotLuck" -> {
                     card = takeCard("PotLuck", Board.getPlayers(), playingBoard);
                     rollDiceActionLabel.setText("Action: " + actionType + " Picked Card: " + card.getDescription());
-                    break;
-                case "Opportunity":
+                }
+                case "Opportunity" -> {
                     card = takeCard("Opportunity", Board.getPlayers(), playingBoard);
                     rollDiceActionLabel.setText("Action: " + actionType + " Picked Card: " + card.getDescription());
-                    break;
-                case "PayBank":
+                }
+                case "PayBank" -> {
                     bankDebtAmount = property.getAction().performAction(Board.getPlayers(), playingBoard);
                     if (bankDebtAmount != 0) {
                         sellPropertyTextField.setDisable(false);
@@ -199,23 +402,21 @@ public class HelloController {
                     } else {
                         rollDiceActionLabel.setText("Paid Bank £" + actionValue);
                     }
-
-                    break;
-                case "Collect":
+                }
+                case "Collect" -> {
                     property.getAction().performAction(Board.getPlayers(), playingBoard);
                     rollDiceActionLabel.setText("Collected £" + actionValue);
-                    break;
-                case "FreeParking":
+                }
+                case "FreeParking" -> {
                     property.getAction().performAction(Board.getPlayers(), playingBoard);
                     rollDiceActionLabel.setText("Collected " + actionType + playingBoard.freeParking.toString() + " from FreeParking");
-                    break;
-                case "Jail":
+                }
+                case "Jail" -> {
                     rollDiceButton.setDisable(true);
                     endTurnButton.setDisable(false);
-                    //endTurnButton.setVisible(true);
                     property.getAction().performAction(Board.getPlayers(), playingBoard);
                     rollDiceActionLabel.setText("Sent to Jail");
-                    break;
+                }
             }
         }
         if (card != null) {
@@ -232,7 +433,7 @@ public class HelloController {
             }
         }
         Player owner = property.getOwner();
-        if (owner != null) {
+        if (owner != null && owner != player) {
             // calculate any rent due
             short rent = property.getDueRent(player);
             if (player.getMoney() < rent) {
@@ -243,7 +444,6 @@ public class HelloController {
                 rollDiceButton.setDisable(true);
                 endTurnButton.setDisable(true);
                 rollDiceActionLabel.setText("Need to sell to Pay " + owner.getPlayerToken() + " £" + playerDebtAmount);
-
             } else {
                 player.payMoney(rent);
                 owner.giveMoney(rent);
@@ -252,67 +452,74 @@ public class HelloController {
             if (!property.getGroup().equals("")) {
                 if (player.isPassedGO()) {
                     buyPropertyButton.setDisable(false);
-                    //buyPropertyButton.setVisible(true);
                 }
             } else {
                 buyPropertyButton.setDisable(true);
-                //buyPropertyButton.setVisible(false);
             }
         }
-        //updateGamePiece(player, property);
-        showPlayer(playingBoard.getCurrentPlayer());
-
+        for (Player showPlayer : Board.getPlayers()) {
+            showPlayer(showPlayer);
+        }
+        if (playingBoard.getCurrentPlayer().isPassedGO()) {
+            addBuildingButton.setDisable(false);
+        }
     }
 
+    /**
+     * Takes a card from the relevant queue and performs the action on it
+     *
+     * @param cardType opportunity knock or potluck
+     * @param players  list of players for the birthday card
+     * @param board    board
+     * @return the card that was picked up
+     */
     public Card takeCard(String cardType, List<Player> players, Board board) {
         Card card;
         Player player;
-        short debt = 0;
+        short debt;
         if (Objects.equals(cardType, "PotLuck")) {
             card = playingBoard.potLuck.poll();
         } else {
             card = playingBoard.opportunity.poll();
         }
         player = board.getCurrentPlayer();
-        String cardAction = "";
-        if (card.action != null) {
-            debt = card.action.performAction(players, board);
-            if (debt != 0) {
-                if (card.action.equals("PayFree")) {
-                    freeDebtAmount = debt;
-                    rollDiceActionLabel.setText("Need to sell to Pay FreeParking £" + debt);
-                } else {
-                    bankDebtAmount = debt;
-                    rollDiceActionLabel.setText("Need to sell to Pay Bank £" + debt);
-                }
-                sellPropertyTextField.setDisable(false);
-                sellPropertyButton.setDisable(false);
-                bankruptButton.setDisable(false);
-                rollDiceButton.setDisable(true);
-                endTurnButton.setDisable(true);
-
+        debt = card.action.performAction(players, board);
+        if (debt != 0) {
+            if (card.action.getActionType().equals("PayFree")) {
+                freeParkingDebtAmount = debt;
+                rollDiceActionLabel.setText("Need to sell to Pay FreeParking £" + debt);
+            } else {
+                bankDebtAmount = debt;
+                rollDiceActionLabel.setText("Need to sell to Pay Bank £" + debt);
             }
-            cardAction = card.getAction().getActionType();
+            sellPropertyTextField.setDisable(false);
+            sellPropertyButton.setDisable(false);
+            bankruptButton.setDisable(false);
+            rollDiceButton.setDisable(true);
+            endTurnButton.setDisable(true);
         }
+        String cardAction = card.getAction().getActionType();
         if ("JailFree".equals(cardAction)) {  // don't put card to bottom of pack
             player.setNumJailFree((short) (player.getNumJailFree() + 1));
             rollDiceActionLabel.setText("added get out of jail free card");
-        } else { // ad card to bottom of pack queue
+        } else { // add card to bottom of pack queue
             if (Objects.equals(cardType, "PotLuck")) {
                 playingBoard.potLuck.add(card);
             } else {
                 playingBoard.opportunity.add(card);
             }
         }
-
         return card;
     }
 
 
+    /**
+     * Buy the property you're currently on
+     */
     @FXML
     public void onBuyPropertyButtonClick() {
         Player player = playingBoard.getCurrentPlayer();
-        Property property = player.getCurrentTile(playingBoard);
+        Property property = player.getCurrentTile();
         if (playingBoard.buyProperty(property)) {
             buyPropertyButton.setDisable(true);
             buyPropertyLabel.setText(property.getStreetName() + " brought");
@@ -323,27 +530,30 @@ public class HelloController {
         showPlayer(playingBoard.getCurrentPlayer());
     }
 
+    /**
+     * Pay £10 from when given a choice through potluck card.
+     */
     @FXML
     public void onPay10ButtonClick() {
         if (playingBoard.getCurrentPlayer().getMoney() >= 10) {
             playingBoard.getCurrentPlayer().payMoney((short) 10);
-            playingBoard.bank.giveMoney((short) 10);
+            playingBoard.freeParking.addMoney((short) 10);
             pay10Button.setDisable(true);
             opportunityKnockButton.setDisable(true);
             potLuckChoiceLabel.setText(" £10 Paid");
-
             buyPropertyButton.setDisable(false);
             endTurnButton.setDisable(false);
         }
         showPlayer(playingBoard.getCurrentPlayer());
-
-
     }
 
+    /**
+     * Draw opportunity knock when given a choice through potluck card.
+     */
     @FXML
     public void onOpportunityKnockButtonClick() {
         Card card;
-        card = takeCard("Opportunity", Board.getPlayers(), playingBoard);
+        card = takeCard("Opportunity", Board.getPlayers(), playingBoard); //what if debt
         opportunityKnockButton.setDisable(true);
         pay10Button.setDisable(true);
         potLuckChoiceLabel.setText(card.getDescription() + " picked");
@@ -353,6 +563,9 @@ public class HelloController {
         endTurnButton.setDisable(false);
     }
 
+    /**
+     * Pay £50 to get out of jail
+     */
     @FXML
     public void onPayOutOfJailButtonClick() {
         Player player = playingBoard.getCurrentPlayer();
@@ -367,13 +580,13 @@ public class HelloController {
             jailLabel.setText(" Paid £50");
         }
         showPlayer(playingBoard.getCurrentPlayer());
-
-
     }
 
+    /**
+     * Use get out of jail free card.
+     */
     @FXML
     public void onGetOutJailFreeButtonClick() {
-
         Player player = playingBoard.getCurrentPlayer();
         if (player.getNumJailFree() > 1) {
             player.setNumJailFree((short) (player.getNumJailFree() - 1));
@@ -386,19 +599,20 @@ public class HelloController {
         showPlayer(playingBoard.getCurrentPlayer());
     }
 
+    /**
+     * Build on property.
+     */
     @FXML
     public void onAddBuildingButtonClick() {
         addBuildingTextField.setDisable(false);
         String text = addBuildingTextField.getText();
-
         Player player = playingBoard.getCurrentPlayer();
-
         if (text.length() == 0) {
-            addBuildingLabel.setText("No street name Entered");
+            addBuildingLabel.setText("No street name entered");
         }
-
         Property[] tiles = Board.getTiles();
         Property property = null;
+        //find the property from the text string
         for (Property tile : tiles) {
             if (tile.getStreetName().equalsIgnoreCase(text)) {
                 property = tile;
@@ -407,125 +621,146 @@ public class HelloController {
         addBuildingTextField.setDisable(false);
         if (property == null) {
             addBuildingLabel.setText("Property not found");
-            return;
-        }
-        if (property.getOwner() != player) {
-            addBuildingLabel.setText("you don't own that");
-            return;
-        }
-        if (property.getGroup().equals("Station")) {
-            addBuildingLabel.setText("you cant build houses on a station");
-            return;
-        }
-        if (!property.build(playingBoard.getCurrentPlayer(), playingBoard.bank)) {
-            addBuildingLabel.setText("build failed");
+        } else if (property.getOwner() != player) {
+            addBuildingLabel.setText("You don't own that");
+        } else if (property.getGroup().equals("Station")) {
+            addBuildingLabel.setText("You cant build houses on a station");
         } else {
-            addBuildingLabel.setText(" Build Successful");
-            updateOwner(player, property);
+            if (!property.build(playingBoard.getCurrentPlayer(), playingBoard.bank)) {
+                addBuildingLabel.setText("Build failed");
+            } else {
+                addBuildingLabel.setText("Build Successful");
+                updateOwner(player, property);
+            }
+            showPlayer(playingBoard.getCurrentPlayer());
         }
-        //addBuildingButton.setDisable(true);
-        showPlayer(playingBoard.getCurrentPlayer());
     }
 
+    /**
+     * Forfeit the game.
+     */
     @FXML
     public void onBankruptButtonClick() {
+        boolean finished = false;
         Player player = playingBoard.getCurrentPlayer();
-        player.setBankrupt(true);
-        sellPropertyButton.setDisable(true);
-        bankruptButton.setDisable(true);
-        Board.endTurn();
-        rollDiceButton.setDisable(false);
-        sellPropertyLabel.setText("");
-        showPlayer(player);
+        for (Property property : Board.getTiles()) {
+            if (property.getOwner() == player) {
+                bankruptLabel.setText("Please sell all your properties before forfeiting");
+                finished = true;
+                break;
+            }
+        }
+        if (!finished) {
+            player.setBankrupt(true);
+            if (bankDebtAmount > 0) {
+                player.payMoney(player.getMoney());
+                playingBoard.bank.giveMoney(player.getMoney());
+                bankDebtAmount = 0;
+            } else if (freeParkingDebtAmount > 0) {
+                player.payMoney(player.getMoney());
+                playingBoard.freeParking.addMoney(player.getMoney());
+                freeParkingDebtAmount = 0;
+            } else if (playerDebtAmount > 0) {
+                player.payMoney(player.getMoney());
+                player.getCurrentTile().getOwner().giveMoney(player.getMoney());
+                playerDebtAmount = 0;
+            }
+            sellPropertyButton.setDisable(true);
+            bankruptButton.setDisable(true);
+            Board.endTurn();
+            rollDiceButton.setDisable(false);
+            sellPropertyLabel.setText("");
+            showPlayer(player);
+        }
     }
 
+
+    /**
+     * Sell property from the entered text
+     */
     @FXML
     public void onSellPropertyButtonClick() {
         Player player = playingBoard.getCurrentPlayer();
         String text = sellPropertyTextField.getText();
         if (text.length() == 0) {
-            sellPropertyLabel.setText(" no property name entered");
-            return;
-        }
-        Property[] tiles = Board.getTiles();
-        Property property = null;
-        for (Property tile : tiles) {
-            if (tile.getStreetName().equalsIgnoreCase(text)) {
-                property = tile;
-            }
-        }
-
-        if (property == null) {
-            sellPropertyLabel.setText("Property not found");
-            return;
-        }
-        if (property.getOwner() != playingBoard.getCurrentPlayer()) {
-            sellPropertyLabel.setText("you don't own that");
-            return;
-        }
-        short value = 0;
-        if ((value = property.sellProperty()) == 0) {
-            sellPropertyLabel.setText("sale failed try another property");
+            sellPropertyLabel.setText("No property name entered");
         } else {
-            sellPropertyLabel.setText("sale succeeded");
-            if (property.getOwner() == null) {
-                updateOwner(null, property);
+            Property[] tiles = Board.getTiles();
+            Property property = null;
+            for (Property tile : tiles) {
+                if (tile.getStreetName().equalsIgnoreCase(text)) {
+                    property = tile;
+                }
+            }
+            if (property == null) {
+                sellPropertyLabel.setText("Property not found");
+            } else if (property.getOwner() != playingBoard.getCurrentPlayer()) {
+                sellPropertyLabel.setText("You don't own that");
             } else {
-                updateOwner(player, property);
-            }
-
-            playingBoard.getCurrentPlayer().giveMoney(value);
-            showPlayer(player);
-            if (bankDebtAmount != 0) {
-                if (bankDebtAmount <= player.getMoney()) {
-                    playingBoard.bank.giveMoney(bankDebtAmount);
-                    player.payMoney(bankDebtAmount);
-                    endTurnButton.setDisable(false);
-                    sellPropertyButton.setDisable(false);
-                    bankDebtAmount = 0;
-                    showPlayer(player);
+                short value;
+                if ((value = property.sellProperty()) == 0) {
+                    sellPropertyLabel.setText("Sale failed try another property");
                 } else {
-                    sellPropertyLabel.setText(" need more money to cover the debt £" + bankDebtAmount);
-
-                }
-                return;
-            }
-            if (freeDebtAmount != 0) {
-                if (freeDebtAmount <= player.getMoney()) {
-                    playingBoard.bank.giveMoney(freeDebtAmount);
-                    player.payMoney(freeDebtAmount);
-                    endTurnButton.setDisable(false);
-                    sellPropertyButton.setDisable(false);
-                    freeDebtAmount = 0;
+                    sellPropertyLabel.setText("Sale succeeded");
+                    if (property.getOwner() == null) {
+                        updateOwner(null, property);
+                    } else {
+                        updateOwner(player, property);
+                    }
+                    playingBoard.getCurrentPlayer().giveMoney(value);
                     showPlayer(player);
-                } else {
-                    sellPropertyLabel.setText(" need more money to cover the debt £" + freeDebtAmount);
-
+                    if (bankDebtAmount != 0) {
+                        if (bankDebtAmount <= player.getMoney()) {
+                            playingBoard.bank.giveMoney(bankDebtAmount);
+                            player.payMoney(bankDebtAmount);
+                            bankDebtAmount = 0;
+                            afterDebt(player);
+                        } else {
+                            sellPropertyLabel.setText("Need more money to cover the debt £" + bankDebtAmount);
+                        }
+                    } else {
+                        if (freeParkingDebtAmount != 0) {
+                            if (freeParkingDebtAmount <= player.getMoney()) {
+                                playingBoard.freeParking.addMoney(freeParkingDebtAmount);
+                                player.payMoney(freeParkingDebtAmount);
+                                freeParkingDebtAmount = 0;
+                                afterDebt(player);
+                            } else {
+                                sellPropertyLabel.setText("Need more money to cover the debt £" + freeParkingDebtAmount);
+                            }
+                        }
+                        if (playerDebtAmount != 0) {
+                            if (playerDebtAmount <= player.getMoney()) {
+                                Player owner = player.getCurrentTile().getOwner();
+                                owner.giveMoney(playerDebtAmount);
+                                player.payMoney(playerDebtAmount);
+                                playerDebtAmount = 0;
+                                afterDebt(player);
+                                showPlayer(owner);
+                            } else {
+                                sellPropertyLabel.setText("Need more money to cover the debt £" + playerDebtAmount);
+                            }
+                        }
+                    }
                 }
-
-
-            }
-            if (playerDebtAmount != 0) {
-                if (playerDebtAmount <= player.getMoney()) {
-                    Player owner = player.getCurrentTile(playingBoard).getOwner();
-                    owner.giveMoney(playerDebtAmount);
-                    player.payMoney(playerDebtAmount);
-                    endTurnButton.setDisable(false);
-                    sellPropertyButton.setDisable(true);
-                    playerDebtAmount = 0;
-                    showPlayer(player);
-                    showPlayer(owner);
-                } else {
-                    sellPropertyLabel.setText(" need more money to cover the debt £" + playerDebtAmount);
-                }
-
-
             }
         }
-
-
     }
 
+    /**
+     * enables end turn and sell property buttons
+     *
+     * @param player player to refresh
+     */
+    public void afterDebt(Player player) {
+        endTurnButton.setDisable(false);
+        sellPropertyButton.setDisable(false);
+        showPlayer(player);
+    }
+
+    /**
+     * Fills arrays with board elements, so they can be accessed in loops easier.
+     */
     public void fillArrays() {
         //Names
         boardNameLabels[0] = name0;
@@ -701,6 +936,10 @@ public class HelloController {
         boardStackPanes[38] = tile38;
         boardStackPanes[39] = tile39;
     }
+
+    /**
+     * Fills the board with the data from the tiles property array which was generated from the .json
+     */
     public void fillBoard() {
         Property[] tiles = Board.getTiles();
         for (int i = 0; i < tiles.length; i++) {
@@ -742,26 +981,47 @@ public class HelloController {
         }
     }
 
+    /**
+     * @param object the object to check
+     * @return if the object is a Label
+     */
     public boolean isLabel(Object object) {
         return object.getClass().getSimpleName().equals("Label");
     }
 
+    /**
+     * @param object the object to check
+     * @return if the object is a StackPane
+     */
     public boolean isStackPane(Object object) {
         return object.getClass().getSimpleName().equals("StackPane");
     }
 
 
+    /**
+     * Updates the label player info in the bottom right.
+     *
+     * @param player the player to update
+     */
     public void showPlayer(Player player) {
         int playerNo = player.fetchPlayerNum();
         int money = player.getMoney();
-        String position = player.getCurrentTile(playingBoard).getStreetName();
+        Property tile = player.getCurrentTile();
+        String position = tile.getStreetName();
         String inJail = player.getInJail() ? "In Jail" : "";
         String hasLost = player.isBankrupt() ? "Bankrupt" : "";
+        String group = tile.getGroup();
+        if (group.equalsIgnoreCase("deep blue")) {
+            group = "Navy";
+        } else if (group.equalsIgnoreCase("") || group.equalsIgnoreCase("Station") || group.equalsIgnoreCase("Utilities")) {
+            group = "Black";
+        }
         switch (playerNo) {
             case 1 -> {
                 player1.setText("Player" + playerNo);
                 money1.setText("£" + money);
                 pos1.setText(position);
+                pos1.setStyle("-fx-text-fill: " + group);
                 jail1.setText(inJail);
                 lose1.setText(hasLost);
             }
@@ -769,6 +1029,7 @@ public class HelloController {
                 player2.setText("Player" + playerNo);
                 money2.setText("£" + money);
                 pos2.setText(position);
+                pos2.setStyle("-fx-text-fill: " + group);
                 jail2.setText(inJail);
                 lose2.setText(hasLost);
             }
@@ -776,6 +1037,7 @@ public class HelloController {
                 player3.setText("Player" + playerNo);
                 money3.setText("£" + money);
                 pos3.setText(position);
+                pos3.setStyle("-fx-text-fill: " + group);
                 jail3.setText(inJail);
                 lose3.setText(hasLost);
             }
@@ -783,6 +1045,7 @@ public class HelloController {
                 player4.setText("Player" + playerNo);
                 money4.setText("£" + money);
                 pos4.setText(position);
+                pos4.setStyle("-fx-text-fill: " + group);
                 jail4.setText(inJail);
                 lose4.setText(hasLost);
             }
@@ -790,16 +1053,22 @@ public class HelloController {
                 player5.setText("Player" + playerNo);
                 money5.setText("£" + money);
                 pos5.setText(position);
+                pos5.setStyle("-fx-text-fill: " + group);
                 jail5.setText(inJail);
                 lose5.setText(hasLost);
             }
         }
     }
 
+    /**
+     * Updates the label on the board to show the current owner status including houses, hotels and mortgages.
+     *
+     * @param player   Owner
+     * @param property Property to be updated
+     */
     public void updateOwner(Player player, Property property) {
         int i = property.getPropertyNo();
         int houses = property.getNumHouses() + property.getNumHotels();
-
         String housesText = switch (houses) {
             //House Emoji
             case 0 -> property.isMortgaged() ? " Loaned" : "";
@@ -812,6 +1081,43 @@ public class HelloController {
         };
         String text = player != null ? "Player" + player.fetchPlayerNum() : "";
         boardOwnerLabels[i].setText(text + housesText);
+    }
+
+    /**
+     * Add a robot to the game
+     */
+    @FXML
+    protected void onAddRobotButtonClick() {
+        if (addPlayer(true)) {
+            addRobotButton.setDisable(true);
+        }
+    }
+
+    /**
+     * Validates that it's a valid time to add the player
+     *
+     * @param robot if it's a robot being added
+     */
+    public boolean addPlayer(boolean robot) {
+        Player.Token token = (Player.Token) playerTokenComboBox.getValue();
+        if (token == null) {
+            addPlayerLabel.setText("Please select a valid token.");
+            return false;
+        }
+        playerInt += 1;
+        if (playerInt <= 5) {
+            if (Board.addPlayer(playerInt, token, robot)) {
+                addPlayerLabel.setText("Player" + playerInt + " has been added to the game with the " + WordUtils.capitalizeFully(String.valueOf(token)) + " token. " + playerInt + "/5");
+                return true;
+            } else {
+                addPlayerLabel.setText("Failed to add player");
+            }
+        } else {
+            addPlayerLabel.setText("Maximum of 5 players added. Please start the game.");
+        }
+        startGameButton.setDisable(false);
+        startGameButton.setVisible(true);
+        return false;
     }
 
     /*public void updateGamePiece(Player player, Property property) {

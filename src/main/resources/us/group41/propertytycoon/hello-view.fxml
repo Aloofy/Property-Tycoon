@@ -369,12 +369,13 @@
       </GridPane>
       <VBox alignment="CENTER_RIGHT" prefWidth="650.0">
          <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
+            <ComboBox id="playerTokenComboBox" fx:id="playerTokenComboBox" onMouseClicked="#onPlayerTokenComboBoxClick"
+                      prefHeight="25.0" prefWidth="147.0" promptText="Choose Game Piece"/>
             <HBox alignment="CENTER" prefHeight="26.0" prefWidth="503.0">
                <Button fx:id="addPlayerButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
                        onMouseClicked="#onAddPlayerButtonClick" text="Add Player"/>
-               <ComboBox id="playerTokenComboBox" fx:id="playerTokenComboBox"
-                         onMouseClicked="#onPlayerTokenComboBoxClick" prefHeight="25.0" prefWidth="147.0"
-                         promptText="Choose Game Piece"/>
+               <Button fx:id="addRobotButton" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="86.0"
+                       layoutY="11.0" mnemonicParsing="false" onMouseClicked="#onAddRobotButtonClick" text="Add Robot"/>
             </HBox>
             <Label id="addPlayerLabel" fx:id="addPlayerLabel"/>
          </VBox>
@@ -442,105 +443,92 @@
             <Label id="sellPropertyLabel" fx:id="sellPropertyLabel"/>
          </VBox>
          <VBox alignment="CENTER" prefHeight="25.0" prefWidth="503.0">
-            <children>
-               <Button id="bankruptButton" fx:id="bankruptButton" disable="true" mnemonicParsing="false"
-                       onMouseClicked="#onBankruptButtonClick" text="Forfeit"/>
-            </children>
+            <Button id="bankruptButton" fx:id="bankruptButton" disable="true" mnemonicParsing="false"
+                    onMouseClicked="#onBankruptButtonClick" text="Forfeit"/>
+            <Label fx:id="bankruptLabel"/>
          </VBox>
          <HBox alignment="CENTER_LEFT" prefWidth="503.0">
-            <children>
-               <VBox alignment="CENTER_LEFT">
-                  <children>
-                     <Label text="Player#"/>
-                     <Label id="player1" fx:id="player1" alignment="TOP_CENTER">
-                        <VBox.margin>
-                           <Insets/>
-                        </VBox.margin>
-                     </Label>
-                     <Label id="player2" fx:id="player2"/>
-                     <Label id="player3" fx:id="player3"/>
-                     <Label id="player4" fx:id="player4"/>
-                     <Label id="player5" fx:id="player5"/>
-                  </children>
-                  <HBox.margin>
+            <VBox alignment="CENTER_LEFT">
+               <HBox.margin>
+                  <Insets/>
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+               </padding>
+               <Label text="Player#"/>
+               <Label id="player1" fx:id="player1" alignment="TOP_CENTER">
+                  <VBox.margin>
                      <Insets/>
-                  </HBox.margin>
-                  <padding>
-                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
-                  </padding>
-               </VBox>
-               <VBox alignment="CENTER_LEFT">
-                  <children>
-                     <Label text="Money"/>
-                     <Label id="money1" fx:id="money1" alignment="TOP_CENTER">
-                        <VBox.margin>
-                           <Insets/>
-                        </VBox.margin>
-                     </Label>
-                     <Label id="money2" fx:id="money2"/>
-                     <Label id="money3" fx:id="money3"/>
-                     <Label id="money4" fx:id="money4"/>
-                     <Label id="money5" fx:id="money5"/>
-                  </children>
-                  <padding>
-                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
-                  </padding>
-               </VBox>
-               <VBox alignment="CENTER_LEFT">
-                  <children>
-                     <Label text="Position"/>
-                     <Label id="pos1" fx:id="pos1" alignment="TOP_CENTER">
-                        <VBox.margin>
-                           <Insets/>
-                        </VBox.margin>
-                        <opaqueInsets>
-                           <Insets/>
-                        </opaqueInsets>
-                     </Label>
-                     <Label id="pos2" fx:id="pos2"/>
-                     <Label id="pos3" fx:id="pos3"/>
-                     <Label id="pos4" fx:id="pos4"/>
-                     <Label id="pos5" fx:id="pos5"/>
-                  </children>
-                  <padding>
-                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
-                  </padding>
-               </VBox>
-               <VBox alignment="CENTER_LEFT">
-                  <children>
-                     <Label/>
-                     <Label id="jail1" fx:id="jail1" alignment="TOP_CENTER">
-                        <VBox.margin>
-                           <Insets/>
-                        </VBox.margin>
-                     </Label>
-                     <Label id="jail2" fx:id="jail2"/>
-                     <Label id="jail3" fx:id="jail3"/>
-                     <Label id="jail4" fx:id="jail4"/>
-                     <Label id="jail5" fx:id="jail5"/>
-                  </children>
-                  <padding>
-                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
-                  </padding>
-               </VBox>
-               <VBox alignment="CENTER_LEFT">
-                  <children>
-                     <Label/>
-                     <Label id="lose1" fx:id="lose1" alignment="TOP_CENTER">
-                        <VBox.margin>
-                           <Insets/>
-                        </VBox.margin>
-                     </Label>
-                     <Label id="lose2" fx:id="lose2"/>
-                     <Label id="lose3" fx:id="lose3"/>
-                     <Label id="lose4" fx:id="lose4"/>
-                     <Label id="lose5" fx:id="lose5"/>
-                  </children>
-                  <padding>
-                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
-                  </padding>
-               </VBox>
-            </children>
+                  </VBox.margin>
+               </Label>
+               <Label id="player2" fx:id="player2"/>
+               <Label id="player3" fx:id="player3"/>
+               <Label id="player4" fx:id="player4"/>
+               <Label id="player5" fx:id="player5"/>
+            </VBox>
+            <VBox alignment="CENTER_LEFT">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+               </padding>
+               <Label text="Money"/>
+               <Label id="money1" fx:id="money1" alignment="TOP_CENTER">
+                  <VBox.margin>
+                     <Insets/>
+                  </VBox.margin>
+               </Label>
+               <Label id="money2" fx:id="money2"/>
+               <Label id="money3" fx:id="money3"/>
+               <Label id="money4" fx:id="money4"/>
+               <Label id="money5" fx:id="money5"/>
+            </VBox>
+            <VBox alignment="CENTER_LEFT">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+               </padding>
+               <Label text="Position"/>
+               <Label id="pos1" fx:id="pos1" alignment="TOP_CENTER">
+                  <VBox.margin>
+                     <Insets/>
+                  </VBox.margin>
+                  <opaqueInsets>
+                     <Insets/>
+                  </opaqueInsets>
+               </Label>
+               <Label id="pos2" fx:id="pos2"/>
+               <Label id="pos3" fx:id="pos3"/>
+               <Label id="pos4" fx:id="pos4"/>
+               <Label id="pos5" fx:id="pos5"/>
+            </VBox>
+            <VBox alignment="CENTER_LEFT">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+               </padding>
+               <Label/>
+               <Label id="jail1" fx:id="jail1" alignment="TOP_CENTER">
+                  <VBox.margin>
+                     <Insets/>
+                  </VBox.margin>
+               </Label>
+               <Label id="jail2" fx:id="jail2"/>
+               <Label id="jail3" fx:id="jail3"/>
+               <Label id="jail4" fx:id="jail4"/>
+               <Label id="jail5" fx:id="jail5"/>
+            </VBox>
+            <VBox alignment="CENTER_LEFT">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+               </padding>
+               <Label/>
+               <Label id="lose1" fx:id="lose1" alignment="TOP_CENTER">
+                  <VBox.margin>
+                     <Insets/>
+                  </VBox.margin>
+               </Label>
+               <Label id="lose2" fx:id="lose2"/>
+               <Label id="lose3" fx:id="lose3"/>
+               <Label id="lose4" fx:id="lose4"/>
+               <Label id="lose5" fx:id="lose5"/>
+            </VBox>
          </HBox>
       </VBox>
    </HBox>

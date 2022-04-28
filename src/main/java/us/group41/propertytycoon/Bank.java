@@ -1,26 +1,37 @@
 package us.group41.propertytycoon;
 
+/**
+ * This class is used to model the bank which stores and distributes money throughout the game.
+ *
+ * @author 235288
+ * @version 0.5.1
+ * @since 29/04/2022
+ */
 public class Bank {
     private int money;
 
-    public Integer getMoney() {
-        return this.money;
-    }
-
+    /**
+     * @param money setter
+     */
     public void setMoney(Integer money) {
         this.money = money;
     }
 
-    public void payMoney(Short amount) {
-        money = money - amount;
+    /**
+     * Take money out of bank
+     *
+     * @param amount of money to take out
+     */
+    public void payMoney(short amount) {
+        money -= amount;
     }
 
-    public void giveMoney(Short amount) {
-        money = money + amount;
-    }
-
-    @Override
-    public String toString() {
-        return "\nmoney: " + money + "\n";
+    /**
+     * Give money to bank
+     *
+     * @param amount to give to bank.
+     */
+    public void giveMoney(short amount) {
+        money += amount;
     }
 }
