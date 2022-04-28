@@ -39,7 +39,7 @@ public class Action {
                 break;
             case "PayBank":
                 if (player.getMoney() < this.actionValue) {
-                    player.setBankrupt(true);
+                    return this.actionValue;
                 } else {
                     player.payMoney(this.actionValue);
                     board.bank.giveMoney(this.actionValue);
@@ -50,16 +50,22 @@ public class Action {
                 short curPos = (short) player.getCurrentPos();
                 player.setCurrentPos(this.actionValue);
                 if (curPos > this.actionValue) {
+                    board.bank.payMoney((short) 200);
                     player.giveMoney((short) 200);  // player passed GO
                     player.setPassedGO(true);
                 }
+                if (player.getCurrentPos() == 0) {  // only case where a go forward goes to a square with an action at the moment.
+                    board.bank.payMoney((short) 200);
+                    player.giveMoney((short) 200);
+                }
+
                 break;
             case "FineOpp":
                 // handled in controller
                 break;
             case "PayFree":
                 if (player.getMoney() < this.actionValue) {
-                    player.setBankrupt(true);
+                    return this.actionValue;
                 } else {
                     player.payMoney(this.actionValue);
                     board.freeParking.addMoney(this.actionValue);
@@ -74,9 +80,7 @@ public class Action {
                 int currentPlayerNo = board.getCurrentPlayerNo();
                 for (int i = 0; i < board.getNumPlayers(); i++) {
                     if (i != currentPlayerNo) {
-                        if (players.get(i).getMoney() < this.actionValue) {
-                            players.get(i).setBankrupt(true);
-                        } else {
+                        if (players.get(i).getMoney() >= this.actionValue && !players.get(i).isBankrupt()) {  //decided not to make bankrupt on birthday present
                             players.get(i).payMoney(this.actionValue);
                             players.get(currentPlayerNo).giveMoney(this.actionValue);
                         }
@@ -101,7 +105,7 @@ public class Action {
                 hotels = player.getHotels(player);
                 rent = ((houses * 40) + (hotels * 115));
                 if (player.getMoney() < this.actionValue) {
-                    player.setBankrupt(true);
+                    return (this.actionValue);
                 } else {
                     player.payMoney((short) rent);
                     board.bank.giveMoney((short) rent);
@@ -112,14 +116,14 @@ public class Action {
                 hotels = player.getHotels(player);
                 rent = ((houses * 25) + (hotels * 100));
                 if (player.getMoney() < this.actionValue) {
-                    player.setBankrupt(true);
+                    return (this.actionValue);
                 } else {
                     player.payMoney((short) rent);
                     board.bank.giveMoney((short) rent);
                 }
                 break;
             case "MoveBack":
-                // to do
+                // handled in controller
                 break;
             default:
                 System.err.println("unknown action " + this.actionType);

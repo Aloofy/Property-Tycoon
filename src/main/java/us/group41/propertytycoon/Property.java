@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Property {
     private String streetName = null;
     private Short cost = null;
-
+    private boolean mortgaged = false;
 
     private Action action;
     private String group = null;
@@ -21,7 +21,18 @@ public class Property {
     private Short numHouses = 0;
     private Player owner = null;
     private Short numHotels = 0;
-    private boolean allPropertiesOwnedByOwner;
+    private boolean allPropertiesOwnedByOwner = false;
+
+
+    private short propertyNo;
+
+    public short getPropertyNo() {
+        return propertyNo;
+    }
+
+    public void setPropertyNo(short propertyNo) {
+        this.propertyNo = propertyNo;
+    }
 
     public Action getAction() {
         return this.action;
@@ -80,19 +91,19 @@ public class Property {
 
     public boolean build(Player player, Bank bank) {
         short houseCost;
-        if (owner != player || !allPropertiesOwnedByOwner) {
+        if (this.owner != player || !this.allPropertiesOwnedByOwner) {
             return false;
         }
         short minHouses = 0;
         Property[] tiles = Board.getTiles();
         for (Property tile : tiles) {
-            if (Objects.equals(this.group, tile.group)) {
+            if (Objects.equals(this.group, tile.group) && tile != this) {
                 if (minHouses < tile.getNumHouses()) {
                     minHouses = tile.getNumHouses();
                 }
             }
         }
-        if (minHouses == 4) {
+        if (this.numHouses == 4) {
             // buying a hotel
             short hotelCost;
             hotelCost = this.getHotelCost();
@@ -113,7 +124,7 @@ public class Property {
             // buying a house
             short numHouses = this.getNumHouses();
 
-            if (numHouses > minHouses + 1) {  // you are trying to add a house which will result in a tile with 2 more houses than the rest
+            if (numHouses > minHouses) {  // you are trying to add a house which will result in a tile with 2 more houses than the rest
                 return false;
             } else {
                 houseCost = this.getHouseCost();
@@ -127,6 +138,57 @@ public class Property {
                 }
             }
         }
+    }
+
+    public short sellProperty() {
+
+        short minHouses = 0;
+        short noHouses;
+        short noHotels;
+
+        noHouses = this.getNumHouses();
+        noHotels = this.getNumHotels();
+
+        if (noHotels > 0) {
+            this.setNumHotels((short) 0);
+            return (this.hotelCost);
+        }
+        Property[] tiles = Board.getTiles();// find minimum no houses in set
+        for (Property tile : tiles) {
+            if (Objects.equals(this.group, tile.group) && tile != this) {
+                if (minHouses < tile.getNumHouses()) {
+                    minHouses = tile.getNumHouses();
+                }
+            }
+        }
+        if (noHouses > 0) {
+            // you can't sell a house to make the number of houses of this property more than one less than the min houses
+            if (noHouses - 1 < minHouses - 1) {
+                return (short) 0;
+            } else {
+                this.setNumHouses((short) (this.getNumHouses() - 1));
+                return this.getHouseCost();
+
+            }
+        } else {
+            if (minHouses > 0) {
+                // you can't mortgage the house. sell the other houses first
+                return ((short) 0);
+            } else {
+                if (this.isMortgaged()) {
+                    // sell it
+                    this.setOwner(null);
+                    this.setMortgaged(false);
+                } else {
+                    // mortgage it
+                    this.setMortgaged(true);
+                }
+                return (short) (this.cost / 2);
+
+            }
+        }
+
+
     }
 
     public short getDueRent(Player player) {
@@ -143,6 +205,10 @@ public class Property {
         Property[] tiles = Board.getTiles();
 
         if (player.getInJail()) {
+            return 0;
+        }
+
+        if (this.isMortgaged()) {
             return 0;
         }
 
@@ -290,8 +356,18 @@ public class Property {
         this.numHouses = numHouses;
     }
 
+    public boolean isMortgaged() {
+        return mortgaged;
+    }
+
+    public void setMortgaged(boolean mortgaged) {
+        this.mortgaged = mortgaged;
+    }
+
     @Override
     public String toString() {
         return "\nStreet Name: " + streetName + "cost: " + cost + "\n";
     }
+
+
 }

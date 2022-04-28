@@ -1,5 +1,6 @@
 [
   {
+    "propertyNo": 0,
     "streetName": "GO",
     "group": "",
     "cost": "",
@@ -9,6 +10,7 @@
     }
   },
   {
+    "propertyNo": 1,
     "streetName": "The Old Creek",
     "group": "Brown",
     "cost": 60,
@@ -22,6 +24,7 @@
     "hotelCost": 50
   },
   {
+    "propertyNo": 2,
     "streetName": "Pot Luck",
     "group": "",
     "cost": "",
@@ -31,6 +34,7 @@
     }
   },
   {
+    "propertyNo": 3,
     "streetName": "Gangsters Paradise",
     "group": "Brown",
     "cost": 60,
@@ -44,6 +48,7 @@
     "hotelCost": 50
   },
   {
+    "propertyNo": 4,
     "streetName": "Income Tax",
     "group": "",
     "cost": "",
@@ -53,6 +58,7 @@
     }
   },
   {
+    "propertyNo": 5,
     "streetName": "Brighton Station",
     "group": "Station",
     "cost": 200,
@@ -62,6 +68,7 @@
     "rent4": 200
   },
   {
+    "propertyNo": 6,
     "streetName": "The Angels Delight",
     "group": "Blue",
     "cost": 100,
@@ -75,6 +82,7 @@
     "hotelCost": 50
   },
   {
+    "propertyNo": 7,
     "streetName": "Opportunity Knocks",
     "group": "",
     "cost": "",
@@ -84,6 +92,7 @@
     }
   },
   {
+    "propertyNo": 8,
     "streetName": "Potter Avenue",
     "group": "Blue",
     "cost": 100,
@@ -97,6 +106,7 @@
     "hotelCost": 50
   },
   {
+    "propertyNo": 9,
     "streetName": "Granger Drive",
     "group": "Blue",
     "cost": 120,
@@ -110,11 +120,13 @@
     "hotelCost": 50
   },
   {
+    "propertyNo": 10,
     "streetName": "Jail/Just visiting",
     "group": "",
     "cost": ""
   },
   {
+    "propertyNo": 11,
     "streetName": "Skywalker Drive",
     "group": "Purple",
     "cost": 140,
@@ -128,6 +140,7 @@
     "hotelCost": 50
   },
   {
+    "propertyNo": 12,
     "streetName": "Tesla Power Co",
     "group": "Utilities",
     "cost": 150,
@@ -137,6 +150,7 @@
     }
   },
   {
+    "propertyNo": 13,
     "streetName": "Wookie Hole",
     "group": "Purple",
     "cost": 140,
@@ -150,6 +164,7 @@
     "hotelCost": 50
   },
   {
+    "propertyNo": 14,
     "streetName": "Rey Lane",
     "group": "Purple",
     "cost": 160,
@@ -163,6 +178,7 @@
     "hotelCost": 100
   },
   {
+    "propertyNo": 15,
     "streetName": "Hove Station",
     "group": "Station",
     "cost": 200,
@@ -172,6 +188,7 @@
     "rent4": 200
   },
   {
+    "propertyNo": 16,
     "streetName": "Bishop Drive",
     "group": "Orange",
     "cost": 180,
@@ -185,6 +202,7 @@
     "hotelCost": 100
   },
   {
+    "propertyNo": 17,
     "streetName": "Pot Luck",
     "group": "",
     "cost": "",
@@ -194,6 +212,7 @@
     }
   },
   {
+    "propertyNo": 18,
     "streetName": "Dunham Street",
     "group": "Orange",
     "cost": 180,
@@ -207,6 +226,7 @@
     "hotelCost": 100
   },
   {
+    "propertyNo": 19,
     "streetName": "Broyles Lane",
     "group": "Orange",
     "cost": 200,
@@ -220,6 +240,7 @@
     "hotelCost": 100
   },
   {
+    "propertyNo": 20,
     "streetName": "Free Parking",
     "group": "",
     "cost": "",
@@ -229,6 +250,7 @@
     }
   },
   {
+    "propertyNo": 21,
     "streetName": "Yue Fei Square",
     "group": "Red",
     "cost": 220,
@@ -242,6 +264,7 @@
     "hotelCost": 150
   },
   {
+    "propertyNo": 22,
     "streetName": "Opportunity Knocks",
     "group": "",
     "cost": "",
@@ -251,6 +274,7 @@
     }
   },
   {
+    "propertyNo": 23,
     "streetName": "Mulan Rouge",
     "group": "Red",
     "cost": 220,
@@ -264,6 +288,7 @@
     "hotelCost": 150
   },
   {
+    "propertyNo": 24,
     "streetName": "Han Xin Gardens",
     "group": "Red",
     "cost": 240,
@@ -277,6 +302,7 @@
     "hotelCost": 150
   },
   {
+    "propertyNo": 25,
     "streetName": "Falmer Station",
     "group": "Station",
     "cost": 200,
@@ -286,6 +312,7 @@
     "rent4": 200
   },
   {
+    "propertyNo": 26,
     "streetName": "Shatner Close",
     "group": "Yellow",
     "cost": 260,
@@ -299,6 +326,7 @@
     "hotelCost": 150
   },
   {
+    "propertyNo": 27,
     "streetName": "Picard Avenue",
     "group": "Yellow",
     "cost": 260,
@@ -312,6 +340,7 @@
     "hotelCost": 150
   },
   {
+    "propertyNo": 28,
     "streetName": "Edison Water",
     "group": "Utilities",
     "cost": 150,
@@ -321,6 +350,7 @@
     }
   },
   {
+    "propertyNo": 29,
     "streetName": "Crusher Creek",
     "group": "Yellow",
     "cost": 280,
@@ -334,6 +364,7 @@
     "hotelCost": 150
   },
   {
+    "propertyNo": 30,
     "streetName": "Go to Jail",
     "group": "",
     "cost": "",
@@ -343,6 +374,7 @@
     }
   },
   {
+    "propertyNo": 31,
     "streetName": "Sirat Mews",
     "group": "Green",
     "cost": 300,
@@ -356,6 +388,7 @@
     "hotelCost": 200
   },
   {
+    "propertyNo": 32,
     "streetName": "Ghengis Crescent",
     "group": "Green",
     "cost": 300,
@@ -369,6 +402,7 @@
     "hotelCost": 200
   },
   {
+    "propertyNo": 33,
     "streetName": "Pot Luck",
     "group": "",
     "cost": "",
@@ -378,6 +412,7 @@
     }
   },
   {
+    "propertyNo": 34,
     "streetName": "Ibis Close",
     "group": "Green",
     "cost": 320,
@@ -391,6 +426,7 @@
     "hotelCost": 200
   },
   {
+    "propertyNo": 35,
     "streetName": "Portslade Station",
     "group": "Station",
     "cost": 200,
@@ -400,6 +436,7 @@
     "rent4": 200
   },
   {
+    "propertyNo": 36,
     "streetName": "Opportunity Knocks",
     "group": "",
     "cost": "",
@@ -409,6 +446,7 @@
     }
   },
   {
+    "propertyNo": 37,
     "streetName": "James Webb Way",
     "group": "Deep blue",
     "cost": 350,
@@ -422,15 +460,17 @@
     "hotelCost": 200
   },
   {
+    "propertyNo": 38,
     "streetName": "Super Tax",
     "group": "",
     "cost": "",
     "action": {
       "actionType": "PayBank",
-      "actionValue": "0"
+      "actionValue": "100"
     }
   },
   {
+    "propertyNo": 39,
     "streetName": "Turing Heights",
     "group": "Deep blue",
     "cost": 400,

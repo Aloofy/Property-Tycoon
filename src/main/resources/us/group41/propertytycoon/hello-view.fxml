@@ -37,26 +37,12 @@
          <opaqueInsets>
             <Insets/>
          </opaqueInsets>
-         <StackPane layoutX="11.0" layoutY="74.0" prefHeight="150.0" prefWidth="200.0"
-                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;">
-            <Label fx:id="name0" contentDisplay="CENTER"/>
-         </StackPane>
-         <StackPane layoutX="133.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
-                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
-                    GridPane.columnIndex="1">
-            <VBox alignment="TOP_CENTER">
-               <StackPane fx:id="group1" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
-               <Label fx:id="name1"/>
-               <Label fx:id="owner1"/>
-               <Label fx:id="cost1"/>
-            </VBox>
-         </StackPane>
-         <StackPane prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile2" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="2">
             <Label fx:id="name2"/>
          </StackPane>
-         <StackPane layoutX="133.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile3" layoutX="133.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="3">
             <VBox alignment="TOP_CENTER">
@@ -66,13 +52,13 @@
                <Label fx:id="cost3"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="194.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile4" layoutX="194.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="4">
             <Label fx:id="name4"/>
          </StackPane>
-         <StackPane alignment="TOP_CENTER" layoutX="255.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
-                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+         <StackPane fx:id="tile5" alignment="TOP_CENTER" layoutX="255.0" layoutY="11.0" prefHeight="150.0"
+                    prefWidth="200.0" style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="5">
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                <Label fx:id="group5"/>
@@ -81,7 +67,7 @@
                <Label fx:id="cost5"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="316.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile6" layoutX="316.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="6">
             <VBox alignment="TOP_CENTER">
@@ -91,12 +77,12 @@
                <Label fx:id="cost6"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="377.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile7" layoutX="377.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="7">
             <Label fx:id="name7"/>
          </StackPane>
-         <StackPane layoutX="438.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile8" layoutX="438.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="8">
             <VBox alignment="TOP_CENTER">
@@ -106,7 +92,7 @@
                <Label fx:id="cost8"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="499.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile9" layoutX="499.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="9">
             <VBox alignment="TOP_CENTER">
@@ -116,12 +102,12 @@
                <Label fx:id="cost9"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="560.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile10" layoutX="560.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="10">
             <Label fx:id="name10"/>
          </StackPane>
-         <StackPane layoutX="621.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile11" layoutX="621.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="10" GridPane.rowIndex="1">
             <VBox alignment="TOP_CENTER">
@@ -131,7 +117,7 @@
                <Label fx:id="cost11"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="621.0" layoutY="74.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile12" layoutX="621.0" layoutY="74.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="10" GridPane.rowIndex="2">
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -141,7 +127,7 @@
                <Label fx:id="cost12"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="621.0" layoutY="137.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile13" layoutX="621.0" layoutY="137.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="10" GridPane.rowIndex="3">
             <VBox alignment="TOP_CENTER">
@@ -151,7 +137,7 @@
                <Label fx:id="cost13"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="621.0" layoutY="200.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile14" layoutX="621.0" layoutY="200.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="10" GridPane.rowIndex="4">
             <VBox alignment="TOP_CENTER">
@@ -161,7 +147,7 @@
                <Label fx:id="cost14"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="621.0" layoutY="263.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile15" layoutX="621.0" layoutY="263.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="10" GridPane.rowIndex="5">
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -171,7 +157,7 @@
                <Label fx:id="cost15"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="621.0" layoutY="326.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile16" layoutX="621.0" layoutY="326.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="10" GridPane.rowIndex="6">
             <VBox alignment="TOP_CENTER">
@@ -181,12 +167,12 @@
                <Label fx:id="cost16"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="621.0" layoutY="389.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile17" layoutX="621.0" layoutY="389.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="10" GridPane.rowIndex="7">
             <Label fx:id="name17"/>
          </StackPane>
-         <StackPane layoutX="621.0" layoutY="452.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile18" layoutX="621.0" layoutY="452.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="10" GridPane.rowIndex="8">
             <VBox alignment="TOP_CENTER">
@@ -196,7 +182,7 @@
                <Label fx:id="cost18"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="621.0" layoutY="515.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile19" layoutX="621.0" layoutY="515.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="10" GridPane.rowIndex="9">
             <VBox alignment="TOP_CENTER">
@@ -206,12 +192,12 @@
                <Label fx:id="cost19"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="560.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile20" layoutX="560.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="10" GridPane.rowIndex="10">
             <Label fx:id="name20"/>
          </StackPane>
-         <StackPane layoutX="621.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile21" layoutX="621.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="9" GridPane.rowIndex="10">
             <VBox alignment="TOP_CENTER">
@@ -221,12 +207,12 @@
                <Label fx:id="cost21"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="560.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile22" layoutX="560.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="8" GridPane.rowIndex="10">
             <Label fx:id="name22"/>
          </StackPane>
-         <StackPane layoutX="499.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile23" layoutX="499.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="7" GridPane.rowIndex="10">
             <VBox alignment="TOP_CENTER">
@@ -236,7 +222,7 @@
                <Label fx:id="cost23"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="438.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile24" layoutX="438.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="6" GridPane.rowIndex="10">
             <VBox alignment="TOP_CENTER">
@@ -246,7 +232,7 @@
                <Label fx:id="cost24"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="377.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile25" layoutX="377.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="5" GridPane.rowIndex="10">
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -256,7 +242,7 @@
                <Label fx:id="cost25"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="316.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile26" layoutX="316.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="4" GridPane.rowIndex="10">
             <VBox alignment="TOP_CENTER">
@@ -266,7 +252,7 @@
                <Label fx:id="cost26"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="255.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile27" layoutX="255.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="3" GridPane.rowIndex="10">
             <VBox alignment="TOP_CENTER">
@@ -276,7 +262,7 @@
                <Label fx:id="cost27"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="194.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile28" layoutX="194.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="2" GridPane.rowIndex="10">
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -286,7 +272,7 @@
                <Label fx:id="cost28"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="133.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile29" layoutX="133.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
                     GridPane.columnIndex="1" GridPane.rowIndex="10">
             <VBox alignment="TOP_CENTER">
@@ -296,11 +282,11 @@
                <Label fx:id="cost29"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="72.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile30" layoutX="72.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="10">
             <Label fx:id="name30"/>
          </StackPane>
-         <StackPane layoutX="11.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile31" layoutX="11.0" layoutY="641.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="9">
             <VBox alignment="TOP_CENTER">
                <StackPane fx:id="group31" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
@@ -309,7 +295,7 @@
                <Label fx:id="cost31"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="11.0" layoutY="578.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile32" layoutX="11.0" layoutY="578.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="8">
             <VBox alignment="TOP_CENTER">
                <StackPane fx:id="group32" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
@@ -318,11 +304,11 @@
                <Label fx:id="cost32"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="11.0" layoutY="515.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile33" layoutX="11.0" layoutY="515.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="7">
             <Label fx:id="name33"/>
          </StackPane>
-         <StackPane layoutX="11.0" layoutY="452.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile34" layoutX="11.0" layoutY="452.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="6">
             <VBox alignment="TOP_CENTER">
                <StackPane fx:id="group34" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
@@ -331,7 +317,7 @@
                <Label fx:id="cost34"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="11.0" layoutY="389.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile35" layoutX="11.0" layoutY="389.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="5">
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                <Label fx:id="group35"/>
@@ -340,11 +326,11 @@
                <Label fx:id="cost35"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="11.0" layoutY="326.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile36" layoutX="11.0" layoutY="326.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="4">
             <Label fx:id="name36"/>
          </StackPane>
-         <StackPane layoutX="11.0" layoutY="263.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile37" layoutX="11.0" layoutY="263.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="3">
             <VBox alignment="TOP_CENTER">
                <StackPane fx:id="group37" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
@@ -353,17 +339,31 @@
                <Label fx:id="cost37"/>
             </VBox>
          </StackPane>
-         <StackPane layoutX="11.0" layoutY="200.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile38" layoutX="11.0" layoutY="200.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="2">
             <Label fx:id="name38"/>
          </StackPane>
-         <StackPane layoutX="11.0" layoutY="137.0" prefHeight="150.0" prefWidth="200.0"
+         <StackPane fx:id="tile39" layoutX="11.0" layoutY="137.0" prefHeight="150.0" prefWidth="200.0"
                     style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;" GridPane.rowIndex="1">
             <VBox alignment="TOP_CENTER">
                <StackPane fx:id="group39" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
                <Label fx:id="name39"/>
                <Label fx:id="owner39"/>
                <Label fx:id="cost39"/>
+            </VBox>
+         </StackPane>
+         <StackPane fx:id="tile0" layoutX="11.0" layoutY="74.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;">
+            <Label fx:id="name0" contentDisplay="CENTER"/>
+         </StackPane>
+         <StackPane fx:id="tile1" layoutX="133.0" layoutY="11.0" prefHeight="150.0" prefWidth="200.0"
+                    style="-fx-border-color: black; -fx-border-insets: -1; -fx-border-width: 2;"
+                    GridPane.columnIndex="1">
+            <VBox alignment="TOP_CENTER">
+               <StackPane fx:id="group1" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Black;"/>
+               <Label fx:id="name1"/>
+               <Label fx:id="owner1"/>
+               <Label fx:id="cost1"/>
             </VBox>
          </StackPane>
       </GridPane>
@@ -385,7 +385,7 @@
          </VBox>
          <VBox alignment="CENTER" prefHeight="50.0" prefWidth="503.0">
             <Button id="rollDiceButton" fx:id="rollDiceButton" disable="true" mnemonicParsing="false"
-                    onMouseClicked="#rollDice" text="Roll Dice &amp; Move"/>
+                    onMouseClicked="#onRollDiceButtonClick" text="Roll Dice &amp; Move"/>
             <Label id="rollDiceLabel" fx:id="rollDiceLabel"/>
             <Label id="rollDiceActionLabel" fx:id="rollDiceActionLabel"/>
          </VBox>
@@ -426,8 +426,8 @@
                <Button id="addBuildingButton" fx:id="addBuildingButton" alignment="CENTER" contentDisplay="CENTER"
                        disable="true" mnemonicParsing="false" onMouseClicked="#onAddBuildingButtonClick"
                        text="Add Building" textAlignment="CENTER"/>
-               <TextField id="addBuildingTextField" fx:id="addBuildingTextField" disable="true" prefHeight="25.0"
-                          prefWidth="99.0" promptText="Street Name/ID"/>
+               <TextField id="addBuildingTextField" fx:id="addBuildingTextField" alignment="CENTER" disable="true"
+                          prefHeight="25.0" prefWidth="120.0" promptText="Street Name"/>
             </HBox>
             <Label id="addBuildingLabel" fx:id="addBuildingLabel"/>
          </VBox>
@@ -436,44 +436,112 @@
                <Button id="sellPropertyButton" fx:id="sellPropertyButton" alignment="CENTER" contentDisplay="CENTER"
                        disable="true" mnemonicParsing="false" onMouseClicked="#onSellPropertyButtonClick"
                        text="Sell Property" textAlignment="CENTER"/>
-               <TextField id="sellPropertyTextField" fx:id="sellPropertyTextField" disable="true" prefHeight="25.0"
-                          prefWidth="99.0" promptText="Street Name/ID"/>
+               <TextField id="sellPropertyTextField" fx:id="sellPropertyTextField" alignment="CENTER" disable="true"
+                          prefHeight="25.0" prefWidth="120.0" promptText="Street Name"/>
             </HBox>
             <Label id="sellPropertyLabel" fx:id="sellPropertyLabel"/>
          </VBox>
-         <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
-            <VBox.margin>
-               <Insets/>
-            </VBox.margin>
-            <Label id="player1Label" fx:id="player1Label" alignment="TOP_CENTER">
-               <VBox.margin>
-                  <Insets/>
-               </VBox.margin>
-            </Label>
-            <Label id="player2Label" fx:id="player2Label" alignment="TOP_CENTER">
-               <VBox.margin>
-                  <Insets/>
-               </VBox.margin>
-            </Label>
-            <Label id="player3Label" fx:id="player3Label" alignment="TOP_CENTER">
-               <VBox.margin>
-                  <Insets/>
-               </VBox.margin>
-            </Label>
-            <Label id="player4Label" fx:id="player4Label" alignment="TOP_CENTER">
-               <VBox.margin>
-                  <Insets/>
-               </VBox.margin>
-            </Label>
-            <Label id="player5Label" fx:id="player5Label" alignment="TOP_CENTER">
-               <VBox.margin>
-                  <Insets/>
-               </VBox.margin>
-               <opaqueInsets>
-                  <Insets/>
-               </opaqueInsets>
-            </Label>
+         <VBox alignment="CENTER" prefHeight="25.0" prefWidth="503.0">
+            <children>
+               <Button id="bankruptButton" fx:id="bankruptButton" disable="true" mnemonicParsing="false"
+                       onMouseClicked="#onBankruptButtonClick" text="Forfeit"/>
+            </children>
          </VBox>
+         <HBox alignment="CENTER_LEFT" prefWidth="503.0">
+            <children>
+               <VBox alignment="CENTER_LEFT">
+                  <children>
+                     <Label text="Player#"/>
+                     <Label id="player1" fx:id="player1" alignment="TOP_CENTER">
+                        <VBox.margin>
+                           <Insets/>
+                        </VBox.margin>
+                     </Label>
+                     <Label id="player2" fx:id="player2"/>
+                     <Label id="player3" fx:id="player3"/>
+                     <Label id="player4" fx:id="player4"/>
+                     <Label id="player5" fx:id="player5"/>
+                  </children>
+                  <HBox.margin>
+                     <Insets/>
+                  </HBox.margin>
+                  <padding>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                  </padding>
+               </VBox>
+               <VBox alignment="CENTER_LEFT">
+                  <children>
+                     <Label text="Money"/>
+                     <Label id="money1" fx:id="money1" alignment="TOP_CENTER">
+                        <VBox.margin>
+                           <Insets/>
+                        </VBox.margin>
+                     </Label>
+                     <Label id="money2" fx:id="money2"/>
+                     <Label id="money3" fx:id="money3"/>
+                     <Label id="money4" fx:id="money4"/>
+                     <Label id="money5" fx:id="money5"/>
+                  </children>
+                  <padding>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                  </padding>
+               </VBox>
+               <VBox alignment="CENTER_LEFT">
+                  <children>
+                     <Label text="Position"/>
+                     <Label id="pos1" fx:id="pos1" alignment="TOP_CENTER">
+                        <VBox.margin>
+                           <Insets/>
+                        </VBox.margin>
+                        <opaqueInsets>
+                           <Insets/>
+                        </opaqueInsets>
+                     </Label>
+                     <Label id="pos2" fx:id="pos2"/>
+                     <Label id="pos3" fx:id="pos3"/>
+                     <Label id="pos4" fx:id="pos4"/>
+                     <Label id="pos5" fx:id="pos5"/>
+                  </children>
+                  <padding>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                  </padding>
+               </VBox>
+               <VBox alignment="CENTER_LEFT">
+                  <children>
+                     <Label/>
+                     <Label id="jail1" fx:id="jail1" alignment="TOP_CENTER">
+                        <VBox.margin>
+                           <Insets/>
+                        </VBox.margin>
+                     </Label>
+                     <Label id="jail2" fx:id="jail2"/>
+                     <Label id="jail3" fx:id="jail3"/>
+                     <Label id="jail4" fx:id="jail4"/>
+                     <Label id="jail5" fx:id="jail5"/>
+                  </children>
+                  <padding>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                  </padding>
+               </VBox>
+               <VBox alignment="CENTER_LEFT">
+                  <children>
+                     <Label/>
+                     <Label id="lose1" fx:id="lose1" alignment="TOP_CENTER">
+                        <VBox.margin>
+                           <Insets/>
+                        </VBox.margin>
+                     </Label>
+                     <Label id="lose2" fx:id="lose2"/>
+                     <Label id="lose3" fx:id="lose3"/>
+                     <Label id="lose4" fx:id="lose4"/>
+                     <Label id="lose5" fx:id="lose5"/>
+                  </children>
+                  <padding>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                  </padding>
+               </VBox>
+            </children>
+         </HBox>
       </VBox>
    </HBox>
 </VBox>

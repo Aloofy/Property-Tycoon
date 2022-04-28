@@ -28,7 +28,6 @@ public class Player {
     public int fetchPlayerNum() {
         return playerNum;
     }
-
     public boolean isBankrupt() {
         return isBankrupt;
     }
@@ -150,17 +149,5 @@ public class Player {
     @Override
     public String toString() {
         return "\nmoney: " + money + "\n";
-    }
-
-    public String status(Board board) {
-        String playerStatus = "\t" + this.playerToken;
-        if (this.playerToken == Token.BOOT) {
-            playerStatus = playerStatus + "\t";
-        } else if (this.playerToken.toString().length() < 8) {
-            playerStatus = playerStatus + "\t\t";
-        }
-
-        playerStatus = playerStatus + "\t" + this.money + "\t\t" + this.inJail + "\t\t" + this.isBankrupt + "\t\t" + this.getCurrentTile(board).getStreetName() + ".";
-        return playerStatus;
     }
 }

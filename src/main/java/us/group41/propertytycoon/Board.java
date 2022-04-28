@@ -114,18 +114,18 @@ public class Board {
         if (player.getInJail()) {
             if (isDouble) {
                 player.setInJail(false);
-                newMovePlayer(dist);
+                MovePlayer(dist);
             } else {
                 player.setJailRolls((short) (player.getJailRolls() + 1));
                 if (player.getJailRolls() == 3) {
                     player.setInJail(false);
                     player.setJailRolls((short) 0);
-                    newMovePlayer(dist);
+                    MovePlayer(dist);
 
                 }
             }
         } else {
-            newMovePlayer(dist);
+            MovePlayer(dist);
         }
 
         if (isDouble) {
@@ -137,6 +137,15 @@ public class Board {
         }
     }
 
+    public boolean endGame() {
+        if (isStarted) {
+            isStarted = false;
+            for (Player player : players) {
+                players.remove(player);
+            }
+        }
+        return true;
+    }
 
     public boolean startGame() {
         if (!isStarted) {
@@ -151,7 +160,7 @@ public class Board {
         }
     }
 
-    public boolean newMovePlayer(int amount) {
+    public boolean MovePlayer(int amount) {
         int currentPos;
         int newPos;
         Player player = players.get(currentPlayerNo);
@@ -185,19 +194,20 @@ public class Board {
 
     public boolean buyProperty(Property property) {
 
-        boolean brought = property.buyProperty(players.get(currentPlayerNo), bank);
+        Player player = players.get(currentPlayerNo);
+        boolean brought = property.buyProperty(player, bank);
         if (brought) {
             boolean allProperties = true;
             for (Property tile : tiles) {
                 if (Objects.equals(property.getGroup(), tile.getGroup())) {
-                    if (property.getOwner() != players.get(currentPlayerNo)) {
+                    if (tile.getOwner() != player || property.getOwner() == null) {
                         allProperties = false;
                     }
                 }
             }
             for (Property tile : tiles) {
                 if (Objects.equals(property.getGroup(), tile.getGroup())) {
-                    property.setAllPropertiesOwnedByOwner(allProperties);
+                    tile.setAllPropertiesOwnedByOwner(allProperties);
                 }
             }
         }
