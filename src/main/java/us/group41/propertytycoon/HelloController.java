@@ -99,11 +99,10 @@ public class HelloController {
      */
     @FXML
     protected void onAddPlayerButtonClick() {
-        if (addPlayer(false)) {
-            if (playerFirstTime) {
-                addRobotButton.setDisable(false);
-                playerFirstTime = false;
-            }
+        addPlayer(false);
+        if (playerFirstTime) {
+            addRobotButton.setDisable(false);
+            playerFirstTime = false;
         }
     }
 
@@ -1088,9 +1087,8 @@ public class HelloController {
      */
     @FXML
     protected void onAddRobotButtonClick() {
-        if (addPlayer(true)) {
-            addRobotButton.setDisable(true);
-        }
+        addPlayer(true);
+        addRobotButton.setDisable(true);
     }
 
     /**
@@ -1098,17 +1096,17 @@ public class HelloController {
      *
      * @param robot if it's a robot being added
      */
-    public boolean addPlayer(boolean robot) {
+    public void addPlayer(boolean robot) {
         Player.Token token = (Player.Token) playerTokenComboBox.getValue();
         if (token == null) {
             addPlayerLabel.setText("Please select a valid token.");
-            return false;
+            return;
         }
         playerInt += 1;
         if (playerInt <= 5) {
             if (Board.addPlayer(playerInt, token, robot)) {
                 addPlayerLabel.setText("Player" + playerInt + " has been added to the game with the " + WordUtils.capitalizeFully(String.valueOf(token)) + " token. " + playerInt + "/5");
-                return true;
+                return;
             } else {
                 addPlayerLabel.setText("Failed to add player");
             }
@@ -1117,7 +1115,6 @@ public class HelloController {
         }
         startGameButton.setDisable(false);
         startGameButton.setVisible(true);
-        return false;
     }
 
     /*public void updateGamePiece(Player player, Property property) {
