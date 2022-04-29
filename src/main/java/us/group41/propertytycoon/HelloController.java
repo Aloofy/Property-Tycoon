@@ -90,7 +90,7 @@ public class HelloController {
         pay10Button.setDisable(true);
         opportunityKnockButton.setDisable(true);
         potLuckChoiceLabel.setText("");
-        rollDiceLabel.setText("Player" + (playingBoard.getCurrentPlayerNo() + 1));
+        rollDiceLabel.setText("Player" + (playingBoard.getCurrentPlayerNo() + 1) + "'s Turn");
         rollDiceActionLabel.setText("");
     }
 
@@ -99,8 +99,8 @@ public class HelloController {
      */
     @FXML
     protected void onAddPlayerButtonClick() {
-        addPlayer(false);
-        if (playerFirstTime) {
+        boolean success = addPlayer(false);
+        if (playerFirstTime && success) {
             addRobotButton.setDisable(false);
             playerFirstTime = false;
         }
@@ -331,7 +331,7 @@ public class HelloController {
         pay10Button.setDisable(true);
         opportunityKnockButton.setDisable(true);
         potLuckChoiceLabel.setText("");
-        rollDiceLabel.setText("Player" + (playingBoard.getCurrentPlayerNo() + 1));
+        rollDiceLabel.setText("Player" + (playingBoard.getCurrentPlayerNo() + 1) + "'s Turn");
         rollDiceActionLabel.setText("");
         for (Player showPlayer : Board.getPlayers()) {
             showPlayer(showPlayer);
@@ -1087,8 +1087,9 @@ public class HelloController {
      */
     @FXML
     protected void onAddRobotButtonClick() {
-        addPlayer(true);
-        addRobotButton.setDisable(true);
+        if (addPlayer(true)) {
+            addRobotButton.setDisable(true);
+        }
     }
 
     /**
@@ -1096,25 +1097,30 @@ public class HelloController {
      *
      * @param robot if it's a robot being added
      */
-    public void addPlayer(boolean robot) {
+    public boolean addPlayer(boolean robot) {
+        boolean result = false;
         Player.Token token = (Player.Token) playerTokenComboBox.getValue();
         if (token == null) {
             addPlayerLabel.setText("Please select a valid token.");
-            return;
-        }
-        playerInt += 1;
-        if (playerInt <= 5) {
-            if (Board.addPlayer(playerInt, token, robot)) {
-                addPlayerLabel.setText("Player" + playerInt + " has been added to the game with the " + WordUtils.capitalizeFully(String.valueOf(token)) + " token. " + playerInt + "/5");
-                return;
-            } else {
-                addPlayerLabel.setText("Failed to add player");
-            }
         } else {
-            addPlayerLabel.setText("Maximum of 5 players added. Please start the game.");
+            if (playerInt < 5) {
+                playerInt += 1;
+                if (Board.addPlayer(playerInt, token, robot)) {
+                    addPlayerLabel.setText("Player" + playerInt + " has been added to the game with the " + WordUtils.capitalizeFully(String.valueOf(token)) + " token. " + playerInt + "/5");
+                    result = true;
+                    if (playerInt > 1) {
+                        startGameButton.setDisable(false);
+                        startGameButton.setVisible(true);
+                    }
+                } else {
+                    addPlayerLabel.setText("Token already in use, try another.");
+                    playerInt -= 1;
+                }
+            } else {
+                addPlayerLabel.setText("Maximum of 5 players added. Please start the game.");
+            }
         }
-        startGameButton.setDisable(false);
-        startGameButton.setVisible(true);
+        return result;
     }
 
     /*public void updateGamePiece(Player player, Property property) {
